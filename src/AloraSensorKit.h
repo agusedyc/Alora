@@ -12,6 +12,8 @@
 #include <ClosedCube_HDC1080.h>
 #include <Adafruit_TSL2591.h>
 #include <SparkFunCCS811.h>
+#include <SparkFunLSM9DS1.h>
+#include "GpioExpander.h"
 
 #ifndef ALORA_SENSOR_QUERY_INTERVAL
 #define ALORA_SENSOR_QUERY_INTERVAL 1000
@@ -19,6 +21,8 @@
 
 #define ALORA_HDC1080_ADDRESS 0x40
 #define ALORA_I2C_ADDRESS_CCS811 0x5A
+#define ALORA_I2C_ADDRESS_IMU_M 0x1E
+#define ALORA_I2C_ADDRESS_IMU_AG 0x6B
 
 struct SensorValues {
     float T1;
@@ -29,6 +33,16 @@ struct SensorValues {
     double lux;
     uint16_t gas;
     uint16_t co2;
+    float accelX;
+    float accelY;
+    float accelZ;
+    float gyroX;
+    float gyroY;
+    float gyroZ;
+    float magX;
+    float magY;
+    float magZ;
+    float magHeading;
 };
 
 class AloraSensorKit {
@@ -46,6 +60,8 @@ private:
     ClosedCube_HDC1080* hdc1080 = NULL;
     Adafruit_TSL2591* tsl2591 = NULL;
     CCS811* ccs811 = NULL;
+    LSM9DS1* imuSensor = NULL;
+    GpioExpander* ioExpander = NULL;
 
     SensorValues lastSensorData;
     uint32_t lastSensorQuerryMs = 0;
@@ -56,6 +72,9 @@ private:
     void readTSL2591(double& lux);
     void configureTSL2591Sensor();
     void readGas(uint16_t& gas, uint16_t& co2);
+    void readAccelerometer(float &ax, float &ay, float &az);
+    void readMagnetometer(float &mx, float &my, float &mz, float &mH);
+    void readGyro(float &ax, float &ay, float &az);
 };
 
 #endif

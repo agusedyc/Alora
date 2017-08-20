@@ -35,6 +35,9 @@
     },
     {
       "name": "SparkFun CCS811 Breakout"
+    },
+    {
+      "name": "SparkFun SX1509 IO Expander"
     }
   ]
 }

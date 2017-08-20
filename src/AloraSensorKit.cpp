@@ -44,6 +44,26 @@ void AloraSensorKit::begin() {
             Serial.printf("[CCS811] Init return code %d\n",  returnCode);
         }
     }
+
+    if (imuSensor == NULL) {
+        imuSensor = new LSM9DS1();
+        imuSensor->settings.device.commInterface =IMU_MODE_I2C;
+        imuSensor->settings.device.mAddress = ALORA_I2C_ADDRESS_IMU_M;
+        imuSensor->settings.device.agAddress = ALORA_I2C_ADDRESS_IMU_AG;
+
+        if (!imuSensor->begin()) {
+            Serial.println("[ERROR] Failed initializing IMU sensor");
+            delete imuSensor;
+            imuSensor = NULL;
+        }
+    }
+
+    if (ioExpander == NULL) {
+        ioExpander = new GpioExpander();
+        ioExpander->begin();
+        ioExpander->pinMode(7, OUTPUT);
+        ioExpander->digitalWrite(7, HIGH);
+    }
 }
 
 void AloraSensorKit::run() {
@@ -82,7 +102,30 @@ void AloraSensorKit::printSensingTo(String& str) {
     char lightPayloadStr[40];
     sprintf(lightPayloadStr, "[Light Sensor] %s Lux\r\n", luxStr);
 
+    char xStr[9], yStr[9], zStr[9];
+    dtostrf(lastSensorData.accelX, 6, 2, xStr);
+    dtostrf(lastSensorData.accelY, 6, 2, yStr);
+    dtostrf(lastSensorData.accelZ, 6, 2, zStr);
+    char accelPayloadStr[64];
+    sprintf(accelPayloadStr, "[ACCEL] X = %s, Y = %s, Z = %s\r\n", xStr, yStr, zStr);
+
+    dtostrf(lastSensorData.gyroX, 6, 2, xStr);
+    dtostrf(lastSensorData.gyroY, 6, 2, yStr);
+    dtostrf(lastSensorData.gyroZ, 6, 2, zStr);
+    char gyroPayloadStr[64];
+    sprintf(gyroPayloadStr, "[GYRO] X = %s, Y = %s, Z = %s\r\n", xStr, yStr, zStr);
+
+    char magHeadingStr[9];
+    dtostrf(lastSensorData.magX, 6, 2, xStr);
+    dtostrf(lastSensorData.magY, 6, 2, yStr);
+    dtostrf(lastSensorData.magZ, 6, 2, zStr);
+    dtostrf(lastSensorData.magHeading, 6, 2, magHeadingStr);
+    char magPayloadStr[64];
+    sprintf(magPayloadStr, "[MAG] X = %s, Y = %s, Z = %s H = %s\r\n", xStr, yStr, zStr, magHeadingStr);
+
+
     str = String(bme280PayloadStr) + String(hdcPayloadStr) + String(lightPayloadStr) + String(gasPayloadStr);
+    str += String(accelPayloadStr) + String(gyroPayloadStr) + String(magPayloadStr);
 }
 
 void AloraSensorKit::scanAndPrintI2C(Print& print) {
@@ -114,6 +157,72 @@ void AloraSensorKit::scanAndPrintI2C(Print& print) {
     } else {
         print.println("DONE\n");
     }
+}
+
+void AloraSensorKit::readAccelerometer(float &ax, float &ay, float &az) {
+    if (imuSensor == NULL) {
+        ax = 0.0;
+        ay = 0.0;
+        az = 0.0;
+
+        return;
+    }
+    imuSensor->readAccel();
+
+    ax = imuSensor->calcAccel(imuSensor->ax);
+    ay = imuSensor->calcAccel(imuSensor->ay);
+    az = imuSensor->calcAccel(imuSensor->az);
+}
+
+void AloraSensorKit::readGyro(float &gx, float &gy, float &gz) {
+    if (imuSensor == NULL) {
+        gx = 0.0;
+        gy = 0.0;
+        gz = 0.0;
+    }
+
+    imuSensor->readGyro();
+
+    gx = imuSensor->calcGyro(imuSensor->gx);
+    gy = imuSensor->calcGyro(imuSensor->gy);
+    gz = imuSensor->calcGyro(imuSensor->gz);
+}
+
+void AloraSensorKit::readMagnetometer(float &mx, float &my, float &mz, float &mH) {
+    if (imuSensor == NULL) {
+        mx = 0.0;
+        my = 0.0;
+        mz = 0.0;
+        mH = 0.0;
+
+        return;
+    }
+
+    imuSensor->readMag();
+
+    mx = imuSensor->calcMag(imuSensor->mx);
+    my = imuSensor->calcMag(imuSensor->my);
+    mz = imuSensor->calcMag(imuSensor->mz);
+
+    float heading;
+
+    if (imuSensor->my > 0)
+    {
+        heading = 90 - (atan(mx / my) * (180 / PI));
+    }
+    else if (imuSensor->my < 0)
+    {
+        heading = -(atan(mx / my) * (180 / PI));
+    }
+    else // hy = 0
+    {
+        if (mx < 0)
+            heading = 180;
+        else
+            heading = 0;
+    }
+
+    mH = heading;
 }
 
 void AloraSensorKit::readBME280(float& T, float& P, float& H) {
@@ -240,4 +349,23 @@ void AloraSensorKit::doAllSensing() {
     readGas(gas, co2);
     lastSensorData.gas = gas;
     lastSensorData.co2 = co2;
+
+    float X, Y, Z;
+    readAccelerometer(X, Y, Z);
+    lastSensorData.accelX = X;
+    lastSensorData.accelY = Y;
+    lastSensorData.accelZ = Z;
+
+    float gX, gY, gZ;
+    readGyro(gX, gY, gZ);
+    lastSensorData.gyroX = gX;
+    lastSensorData.gyroY = gY;
+    lastSensorData.gyroZ = gZ;
+
+    float mX, mY, mZ, mH;
+    readMagnetometer(mX, mY, mZ, mH);
+    lastSensorData.magX = mX;
+    lastSensorData.magY = mY;
+    lastSensorData.magZ = mZ;
+    lastSensorData.magHeading = mH;
 }
