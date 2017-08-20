@@ -14,7 +14,7 @@ void AloraSensorKit::begin() {
         bme280 = new Adafruit_BME280();
 
         if (!bme280->begin()) {
-            Serial.println("Failed to init BME280");
+            Serial.println("[ERROR] Failed to init BME280");
             delete bme280;
             bme280 = NULL;
         }
@@ -35,13 +35,13 @@ void AloraSensorKit::begin() {
 
         CCS811Core::status returnCode = ccs811->begin();
         if (returnCode != CCS811Core::SENSOR_SUCCESS) {
-            Serial.println("[CCS811] .begin() returned with an error.");
-            Serial.printf("[CCS811] Init return code %d\n",  returnCode);
+            Serial.println("[ERROR] CCS811 .begin() returned with an error.");
+            Serial.printf("[ERROR] CCS811 Init return code %d\n",  returnCode);
     
             delete ccs811;
             ccs811 = NULL;
         } else {
-            Serial.printf("[CCS811] Init return code %d\n",  returnCode);
+            Serial.printf("[DEBUG] CCS811 Init return code %d\n",  returnCode);
         }
     }
 
@@ -60,9 +60,22 @@ void AloraSensorKit::begin() {
 
     if (ioExpander == NULL) {
         ioExpander = new GpioExpander();
-        ioExpander->begin();
-        ioExpander->pinMode(7, OUTPUT);
-        ioExpander->digitalWrite(7, HIGH);
+        if (ioExpander->begin()) {
+            ioExpander->pinMode(4, OUTPUT);
+            ioExpander->digitalWrite(4, HIGH);
+
+            // IMU enable
+            ioExpander->pinMode(7, OUTPUT);
+            ioExpander->digitalWrite(7, HIGH);
+
+            // GPS enable
+            ioExpander->pinMode(12, OUTPUT);
+            ioExpander->digitalWrite(12, HIGH);
+        } else {
+            Serial.println("[ERROR] Failed to initialize SX1509 IO Expander");
+            delete ioExpander;
+            ioExpander = NULL;
+        }
     }
 }
 
@@ -87,15 +100,15 @@ void AloraSensorKit::printSensingTo(String& str) {
     dtostrf(lastSensorData.P, 6, 2, pStr);
     dtostrf(lastSensorData.H1, 6, 2, hStr);
     char bme280PayloadStr[64];
-    sprintf(bme280PayloadStr, "[BME280] T = %s *C, P = %s Pa, H = %s\r\n", tStr, pStr, hStr);
+    sprintf(bme280PayloadStr, "[BME280] T = %s *C\tP = %s Pa\tH = %s\r\n", tStr, pStr, hStr);
 
     dtostrf(lastSensorData.T2, 6, 2, tStr);
     dtostrf(lastSensorData.H2, 6, 2, hStr);
     char hdcPayloadStr[40];
-    sprintf(hdcPayloadStr, "[HDC1080] T = %s *C, H = %s\r\n", tStr, hStr);
+    sprintf(hdcPayloadStr, "[HDC1080] T = %s *C\tH = %s\r\n", tStr, hStr);
 
     char gasPayloadStr[40];
-    sprintf(gasPayloadStr, "[GAS & CO2] Gas = %d, CO2 = %d\r\n", lastSensorData.gas, lastSensorData.co2);
+    sprintf(gasPayloadStr, "[GAS & CO2] Gas = %d\tCO2 = %d\r\n", lastSensorData.gas, lastSensorData.co2);
 
     char luxStr[15];
     dtostrf((float)lastSensorData.lux, 10, 4, luxStr);
@@ -107,13 +120,13 @@ void AloraSensorKit::printSensingTo(String& str) {
     dtostrf(lastSensorData.accelY, 6, 2, yStr);
     dtostrf(lastSensorData.accelZ, 6, 2, zStr);
     char accelPayloadStr[64];
-    sprintf(accelPayloadStr, "[ACCEL] X = %s, Y = %s, Z = %s\r\n", xStr, yStr, zStr);
+    sprintf(accelPayloadStr, "[ACCEL] X = %s\tY = %s\tZ = %s\r\n", xStr, yStr, zStr);
 
     dtostrf(lastSensorData.gyroX, 6, 2, xStr);
     dtostrf(lastSensorData.gyroY, 6, 2, yStr);
     dtostrf(lastSensorData.gyroZ, 6, 2, zStr);
     char gyroPayloadStr[64];
-    sprintf(gyroPayloadStr, "[GYRO] X = %s, Y = %s, Z = %s\r\n", xStr, yStr, zStr);
+    sprintf(gyroPayloadStr, "[GYRO] X = %s\tY = %s\tZ = %s\r\n", xStr, yStr, zStr);
 
     char magHeadingStr[9];
     dtostrf(lastSensorData.magX, 6, 2, xStr);
@@ -121,7 +134,7 @@ void AloraSensorKit::printSensingTo(String& str) {
     dtostrf(lastSensorData.magZ, 6, 2, zStr);
     dtostrf(lastSensorData.magHeading, 6, 2, magHeadingStr);
     char magPayloadStr[64];
-    sprintf(magPayloadStr, "[MAG] X = %s, Y = %s, Z = %s H = %s\r\n", xStr, yStr, zStr, magHeadingStr);
+    sprintf(magPayloadStr, "[MAG] X = %s\tY = %s\tZ = %s\tHd = %s Deg\r\n", xStr, yStr, zStr, magHeadingStr);
 
 
     str = String(bme280PayloadStr) + String(hdcPayloadStr) + String(lightPayloadStr) + String(gasPayloadStr);
@@ -330,16 +343,17 @@ void AloraSensorKit::doAllSensing() {
 
     lastSensorQuerryMs = millis();
 
-    float T, P, H;
-    readBME280(T, P, H);
+    float T1, P, H1;
+    readBME280(T1, P, H1);
 
-    lastSensorData.T1 = T;
+    lastSensorData.T1 = T1;
     lastSensorData.P = P;
-    lastSensorData.H1 = H;
+    lastSensorData.H1 = H1;
 
-    readHDC1080(T, P);
-    lastSensorData.T2 = T;
-    lastSensorData.H2 = H;
+    float T2, H2;
+    readHDC1080(T2, H2);
+    lastSensorData.T2 = T2;
+    lastSensorData.H2 = H2;
 
     double lux;
     readTSL2591(lux);
