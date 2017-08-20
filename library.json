@@ -32,6 +32,9 @@
     },
     {
       "name": "Adafruit TSL2591 Library"
+    },
+    {
+      "name": "SparkFun CCS811 Breakout"
     }
   ]
 }

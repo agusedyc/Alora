@@ -29,6 +29,21 @@ void AloraSensorKit::begin() {
         tsl2591 = new Adafruit_TSL2591(2591);
         configureTSL2591Sensor();
     }
+
+    if (ccs811 == NULL) {
+        ccs811 = new CCS811(ALORA_I2C_ADDRESS_CCS811);
+
+        CCS811Core::status returnCode = ccs811->begin();
+        if (returnCode != CCS811Core::SENSOR_SUCCESS) {
+            Serial.println("[CCS811] .begin() returned with an error.");
+            Serial.printf("[CCS811] Init return code %d\n",  returnCode);
+    
+            delete ccs811;
+            ccs811 = NULL;
+        } else {
+            Serial.printf("[CCS811] Init return code %d\n",  returnCode);
+        }
+    }
 }
 
 void AloraSensorKit::run() {
@@ -59,12 +74,15 @@ void AloraSensorKit::printSensingTo(String& str) {
     char hdcPayloadStr[40];
     sprintf(hdcPayloadStr, "[HDC1080] T = %s *C, H = %s\r\n", tStr, hStr);
 
+    char gasPayloadStr[40];
+    sprintf(gasPayloadStr, "[GAS & CO2] Gas = %d, CO2 = %d\r\n", lastSensorData.gas, lastSensorData.co2);
+
     char luxStr[15];
     dtostrf((float)lastSensorData.lux, 10, 4, luxStr);
     char lightPayloadStr[40];
     sprintf(lightPayloadStr, "[Light Sensor] %s Lux\r\n", luxStr);
 
-    str = String(bme280PayloadStr) + String(hdcPayloadStr) + String(lightPayloadStr);
+    str = String(bme280PayloadStr) + String(hdcPayloadStr) + String(lightPayloadStr) + String(gasPayloadStr);
 }
 
 void AloraSensorKit::scanAndPrintI2C(Print& print) {
@@ -170,6 +188,32 @@ void AloraSensorKit::configureTSL2591Sensor() {
     Serial.println(F(""));
 }
 
+void AloraSensorKit::readGas(uint16_t& gas, uint16_t& co2) {
+    if (ccs811 == NULL) {
+        gas = 0;
+        co2 = 0;
+    }
+
+    if (!ccs811->dataAvailable()) { 
+        return;
+    }
+
+    ccs811->readAlgorithmResults();
+    uint16_t airTvoc = ccs811->getTVOC();
+    uint16_t co2val = ccs811->getCO2();
+
+    // Serial.print("[CCS811] CO2: ");
+    // //Returns calculated CO2 reading
+    // Serial.print(co2val);
+    // Serial.print(", tVOC: ");
+    // //Returns calculated TVOC reading
+    // Serial.print(airTvoc);
+    // Serial.println("");
+
+    gas = airTvoc;
+    co2 = co2val;
+}
+
 void AloraSensorKit::doAllSensing() {
     if (millis() - lastSensorQuerryMs < ALORA_SENSOR_QUERY_INTERVAL) {
         return;
@@ -191,4 +235,9 @@ void AloraSensorKit::doAllSensing() {
     double lux;
     readTSL2591(lux);
     lastSensorData.lux = lux;
+
+    uint16_t gas, co2;
+    readGas(gas, co2);
+    lastSensorData.gas = gas;
+    lastSensorData.co2 = co2;
 }
