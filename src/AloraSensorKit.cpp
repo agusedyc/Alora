@@ -24,6 +24,11 @@ void AloraSensorKit::begin() {
         hdc1080 = new ClosedCube_HDC1080();
         hdc1080->begin(ALORA_HDC1080_ADDRESS);
     }
+
+    if (tsl2591 == NULL) {
+        tsl2591 = new Adafruit_TSL2591(2591);
+        configureTSL2591Sensor();
+    }
 }
 
 void AloraSensorKit::run() {
@@ -54,7 +59,12 @@ void AloraSensorKit::printSensingTo(String& str) {
     char hdcPayloadStr[40];
     sprintf(hdcPayloadStr, "[HDC1080] T = %s *C, H = %s\r\n", tStr, hStr);
 
-    str = String(bme280PayloadStr) + String(hdcPayloadStr);
+    char luxStr[15];
+    dtostrf((float)lastSensorData.lux, 10, 4, luxStr);
+    char lightPayloadStr[40];
+    sprintf(lightPayloadStr, "[Light Sensor] %s Lux\r\n", luxStr);
+
+    str = String(bme280PayloadStr) + String(hdcPayloadStr) + String(lightPayloadStr);
 }
 
 void AloraSensorKit::scanAndPrintI2C(Print& print) {
@@ -114,6 +124,52 @@ void AloraSensorKit::readHDC1080(float& T, float& H) {
     H = hdc1080->readHumidity();
 }
 
+void AloraSensorKit::readTSL2591(double &lux) {
+    uint16_t x = tsl2591->getLuminosity(TSL2591_VISIBLE);
+    lux = (double)x;
+}
+
+void AloraSensorKit::configureTSL2591Sensor() {
+    // You can change the gain on the fly, to adapt to brighter/dimmer light situations
+    //tsl.setGain(TSL2591_GAIN_LOW);    // 1x gain (bright light)
+    tsl2591->setGain(TSL2591_GAIN_MED);      // 25x gain
+    // tsl.setGain(TSL2591_GAIN_HIGH);   // 428x gain
+
+    // Changing the integration time gives you a longer time over which to sense light
+    // longer timelines are slower, but are good in very low light situtations!
+    tsl2591->setTiming(TSL2591_INTEGRATIONTIME_100MS);  // shortest integration time (bright light)
+    // tsl.setTiming(TSL2591_INTEGRATIONTIME_200MS);
+    // tsl.setTiming(TSL2591_INTEGRATIONTIME_300MS);
+    // tsl.setTiming(TSL2591_INTEGRATIONTIME_400MS);
+    // tsl.setTiming(TSL2591_INTEGRATIONTIME_500MS);
+    // tsl.setTiming(TSL2591_INTEGRATIONTIME_600MS);  // longest integration time (dim light)
+
+    /* Display the gain and integration time for reference sake */  
+    Serial.println(F("------------------------------------"));
+    Serial.print  (F("Gain:         "));
+    tsl2591Gain_t gain = tsl2591->getGain();
+    switch(gain)
+    {
+        case TSL2591_GAIN_LOW:
+            Serial.println(F("1x (Low)"));
+            break;
+        case TSL2591_GAIN_MED:
+            Serial.println(F("25x (Medium)"));
+            break;
+        case TSL2591_GAIN_HIGH:
+            Serial.println(F("428x (High)"));
+            break;
+        case TSL2591_GAIN_MAX:
+            Serial.println(F("9876x (Max)"));
+            break;
+    }
+    Serial.print  (F("Timing:       "));
+    Serial.print((tsl2591->getTiming() + 1) * 100, DEC); 
+    Serial.println(F(" ms"));
+    Serial.println(F("------------------------------------"));
+    Serial.println(F(""));
+}
+
 void AloraSensorKit::doAllSensing() {
     if (millis() - lastSensorQuerryMs < ALORA_SENSOR_QUERY_INTERVAL) {
         return;
@@ -131,4 +187,8 @@ void AloraSensorKit::doAllSensing() {
     readHDC1080(T, P);
     lastSensorData.T2 = T;
     lastSensorData.H2 = H;
+
+    double lux;
+    readTSL2591(lux);
+    lastSensorData.lux = lux;
 }

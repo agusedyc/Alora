@@ -29,6 +29,9 @@
     },
     {
       "name": "ClosedCube HDC1080"          
+    },
+    {
+      "name": "Adafruit TSL2591 Library"
     }
   ]
 }
