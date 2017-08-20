@@ -19,6 +19,11 @@ void AloraSensorKit::begin() {
             bme280 = NULL;
         }
     }
+
+    if (hdc1080 == NULL) {
+        hdc1080 = new ClosedCube_HDC1080();
+        hdc1080->begin(ALORA_HDC1080_ADDRESS);
+    }
 }
 
 void AloraSensorKit::run() {
@@ -44,7 +49,12 @@ void AloraSensorKit::printSensingTo(String& str) {
     char bme280PayloadStr[64];
     sprintf(bme280PayloadStr, "[BME280] T = %s *C, P = %s Pa, H = %s\r\n", tStr, pStr, hStr);
 
-    str = String(bme280PayloadStr);
+    dtostrf(lastSensorData.T2, 6, 2, tStr);
+    dtostrf(lastSensorData.H2, 6, 2, hStr);
+    char hdcPayloadStr[40];
+    sprintf(hdcPayloadStr, "[HDC1080] T = %s *C, H = %s\r\n", tStr, hStr);
+
+    str = String(bme280PayloadStr) + String(hdcPayloadStr);
 }
 
 void AloraSensorKit::scanAndPrintI2C(Print& print) {
@@ -92,6 +102,18 @@ void AloraSensorKit::readBME280(float& T, float& P, float& H) {
     H = bme280->readHumidity();
 }
 
+void AloraSensorKit::readHDC1080(float& T, float& H) {
+    if (hdc1080 == NULL) {
+        T = 0.0;
+        H = 0.0;
+
+        return;
+    }
+
+    T = hdc1080->readTemperature();
+    H = hdc1080->readHumidity();
+}
+
 void AloraSensorKit::doAllSensing() {
     if (millis() - lastSensorQuerryMs < ALORA_SENSOR_QUERY_INTERVAL) {
         return;
@@ -105,4 +127,8 @@ void AloraSensorKit::doAllSensing() {
     lastSensorData.T1 = T;
     lastSensorData.P = P;
     lastSensorData.H1 = H;
+
+    readHDC1080(T, P);
+    lastSensorData.T2 = T;
+    lastSensorData.H2 = H;
 }
