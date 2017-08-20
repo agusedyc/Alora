@@ -24,6 +24,8 @@
 #define ALORA_I2C_ADDRESS_IMU_M 0x1E
 #define ALORA_I2C_ADDRESS_IMU_AG 0x6B
 
+#define ALORA_MAGNETIC_SENSOR_PIN 35
+
 struct SensorValues {
     float T1;
     float P;
@@ -43,6 +45,7 @@ struct SensorValues {
     float magY;
     float magZ;
     float magHeading;
+    int magnetic;
 };
 
 class AloraSensorKit {
@@ -55,6 +58,7 @@ public:
     void scanAndPrintI2C(Print& print);
     void printSensingTo(Print& print);
     void printSensingTo(String& str);
+
 private:
     Adafruit_BME280* bme280 = NULL;
     ClosedCube_HDC1080* hdc1080 = NULL;
@@ -75,6 +79,7 @@ private:
     void readAccelerometer(float &ax, float &ay, float &az);
     void readMagnetometer(float &mx, float &my, float &mz, float &mH);
     void readGyro(float &ax, float &ay, float &az);
+    void readMagneticSensor(int& mag);
 };
 
 #endif

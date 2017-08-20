@@ -71,12 +71,17 @@ void AloraSensorKit::begin() {
             // GPS enable
             ioExpander->pinMode(12, OUTPUT);
             ioExpander->digitalWrite(12, HIGH);
+
+            ioExpander->pinMode(6, OUTPUT);
+            ioExpander->digitalWrite(6, HIGH);
         } else {
             Serial.println("[ERROR] Failed to initialize SX1509 IO Expander");
             delete ioExpander;
             ioExpander = NULL;
         }
     }
+
+    pinMode(ALORA_MAGNETIC_SENSOR_PIN, INPUT);
 }
 
 void AloraSensorKit::run() {
@@ -136,9 +141,14 @@ void AloraSensorKit::printSensingTo(String& str) {
     char magPayloadStr[64];
     sprintf(magPayloadStr, "[MAG] X = %s\tY = %s\tZ = %s\tHd = %s Deg\r\n", xStr, yStr, zStr, magHeadingStr);
 
+    char magnetic[2];
+    sprintf(magnetic, "%d", lastSensorData.magnetic);
+    char magneticPayloadStr[40];
+    sprintf(magneticPayloadStr, "[Magnetic] %s \r\n", magnetic);
 
-    str = String(bme280PayloadStr) + String(hdcPayloadStr) + String(lightPayloadStr) + String(gasPayloadStr);
+    str = String(bme280PayloadStr) + String(hdcPayloadStr) + String(gasPayloadStr);
     str += String(accelPayloadStr) + String(gyroPayloadStr) + String(magPayloadStr);
+    str += String(lightPayloadStr) + String(magneticPayloadStr);
 }
 
 void AloraSensorKit::scanAndPrintI2C(Print& print) {
@@ -170,6 +180,10 @@ void AloraSensorKit::scanAndPrintI2C(Print& print) {
     } else {
         print.println("DONE\n");
     }
+}
+
+void AloraSensorKit::readMagneticSensor(int& mag) {
+    mag = digitalRead(ALORA_MAGNETIC_SENSOR_PIN);
 }
 
 void AloraSensorKit::readAccelerometer(float &ax, float &ay, float &az) {
@@ -382,4 +396,8 @@ void AloraSensorKit::doAllSensing() {
     lastSensorData.magY = mY;
     lastSensorData.magZ = mZ;
     lastSensorData.magHeading = mH;
+
+    int mag;
+    readMagneticSensor(mag);
+    lastSensorData.magnetic = mag;
 }
