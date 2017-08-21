@@ -99,6 +99,14 @@ void AloraSensorKit::begin() {
         }
     }
 
+    if (rtc == NULL) {
+        rtc = new RTC_DS3231();
+        if (!rtc->begin()) {
+            delete rtc;
+            rtc = NULL;
+        }
+    }
+
     pinMode(ALORA_MAGNETIC_SENSOR_PIN, INPUT);
 }
 
@@ -110,7 +118,10 @@ void AloraSensorKit::run() {
     doAllSensing();
 }
 
-
+/**
+ * Print the sensing data in a non-standarized format.
+ * @param print any object which class derived from Print including Serial and String.
+ */
 void AloraSensorKit::printSensingTo(Print& print) {
     print.println("Sensing:");
     
@@ -119,6 +130,10 @@ void AloraSensorKit::printSensingTo(Print& print) {
     print.println(senseStr);
 }
 
+/**
+ * Print the sensing data in a non-standarized format.
+ * @param str a string where the sensing data will be stored.
+ */
 void AloraSensorKit::printSensingTo(String& str) {
     doAllSensing();
 
@@ -475,4 +490,16 @@ void AloraSensorKit::doAllSensing() {
     int mag;
     readMagneticSensor(mag);
     lastSensorData.magnetic = mag;
+}
+
+/**
+ * Get current time from RTC.
+ * @return DateTime object of current time.
+ */
+DateTime AloraSensorKit::getDateTime() {
+    if (rtc == NULL) {
+        return DateTime();
+    }
+
+    return rtc->now();
 }

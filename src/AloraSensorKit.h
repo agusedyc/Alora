@@ -15,6 +15,9 @@
 #include <SparkFunLSM9DS1.h>
 #include "GpioExpander.h"
 
+#include <RTClib.h>
+#undef SECONDS_PER_DAY
+
 #include <AllAboutEE_MAX11609.h>
 using namespace AllAboutEE;
 
@@ -75,18 +78,9 @@ public:
     void begin();
     void run();
     void scanAndPrintI2C(Print& print);
-
-    /**
-     * Print the sensing data in a non-standarized format.
-     * @param print any object which class derived from Print including Serial and String.
-     */
     void printSensingTo(Print& print);
-
-    /**
-     * Print the sensing data in a non-standarized format.
-     * @param str a string where the sensing data will be stored.
-     */
     void printSensingTo(String& str);
+    DateTime getDateTime();
 
 private:
     Adafruit_BME280* bme280 = NULL;             /**< Object of Adafruit BME280 sensor */
@@ -96,6 +90,7 @@ private:
     LSM9DS1* imuSensor = NULL;                  /**< Object of LSM9DS1 sensor */
     GpioExpander* ioExpander = NULL;            /**< Object of GPIO Expander (SX1509) */
     MAX11609* max11609 = NULL;                  /**< Object of MAX11609 */
+    RTC_DS3231* rtc = NULL;                     /**< Object of RTC sensor */
 
     SensorValues lastSensorData;                /**< Object of SensorValues struct. All sensor data are stored in this property */
     uint32_t lastSensorQuerryMs = 0;            /**< Records the time when the sensor data is read in milliseconds */
