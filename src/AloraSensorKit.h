@@ -15,6 +15,13 @@
 #include <SparkFunLSM9DS1.h>
 #include "GpioExpander.h"
 
+#include <AllAboutEE_MAX11609.h>
+using namespace AllAboutEE;
+
+#ifndef ALORA_SENSOR_USE_CCS811
+#define ALORA_SENSOR_USE_CCS811 1
+#endif
+
 #ifndef ALORA_SENSOR_QUERY_INTERVAL
 #define ALORA_SENSOR_QUERY_INTERVAL 300
 #endif
@@ -25,6 +32,9 @@
 #define ALORA_I2C_ADDRESS_IMU_AG 0x6B
 
 #define ALORA_MAGNETIC_SENSOR_PIN 35
+
+#define ALORA_ADC_GAS_HEATER_PIN 13
+#define ALORA_ADC_GAS_CHANNEL 1
 
 struct SensorValues {
     float T1;
@@ -66,6 +76,7 @@ private:
     CCS811* ccs811 = NULL;
     LSM9DS1* imuSensor = NULL;
     GpioExpander* ioExpander = NULL;
+    MAX11609* max11609 = NULL;
 
     SensorValues lastSensorData;
     uint32_t lastSensorQuerryMs = 0;

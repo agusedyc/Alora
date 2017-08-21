@@ -30,6 +30,12 @@ void AloraSensorKit::begin() {
         configureTSL2591Sensor();
     }
 
+    if (max11609 == NULL) {
+        max11609 = new MAX11609();
+        max11609->begin(AllAboutEE::MAX11609::REF_VDD);
+    }
+
+#if ALORA_SENSOR_USE_CCS811 == 1
     if (ccs811 == NULL) {
         ccs811 = new CCS811(ALORA_I2C_ADDRESS_CCS811);
 
@@ -44,6 +50,10 @@ void AloraSensorKit::begin() {
             Serial.printf("[DEBUG] CCS811 Init return code %d\n",  returnCode);
         }
     }
+#else
+    pinMode(ALORA_ADC_GAS_HEATER_PIN, OUTPUT);
+    digitalWrite(ALORA_ADC_GAS_HEATER_PIN, HIGH);
+#endif
 
     if (imuSensor == NULL) {
         imuSensor = new LSM9DS1();
@@ -325,6 +335,7 @@ void AloraSensorKit::configureTSL2591Sensor() {
 }
 
 void AloraSensorKit::readGas(uint16_t& gas, uint16_t& co2) {
+#if ALORA_SENSOR_USE_CCS811 == 1
     if (ccs811 == NULL) {
         gas = 0;
         co2 = 0;
@@ -338,16 +349,12 @@ void AloraSensorKit::readGas(uint16_t& gas, uint16_t& co2) {
     uint16_t airTvoc = ccs811->getTVOC();
     uint16_t co2val = ccs811->getCO2();
 
-    // Serial.print("[CCS811] CO2: ");
-    // //Returns calculated CO2 reading
-    // Serial.print(co2val);
-    // Serial.print(", tVOC: ");
-    // //Returns calculated TVOC reading
-    // Serial.print(airTvoc);
-    // Serial.println("");
-
     gas = airTvoc;
     co2 = co2val;
+#else
+    gas = max11609->read(ALORA_ADC_GAS_CHANNEL);
+    co2 = 0;
+#endif
 }
 
 void AloraSensorKit::doAllSensing() {
