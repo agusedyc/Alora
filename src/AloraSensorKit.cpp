@@ -5,6 +5,11 @@
 
 #include "AloraSensorKit.h"
 
+void aloraWindSensorInterruptHandler() {
+    aloraWindTimeSinceLastTick = millis() - aloraWindLastTick;
+    aloraWindLastTick = millis();
+}
+
 AloraSensorKit::AloraSensorKit() {
 }
 
@@ -106,6 +111,9 @@ void AloraSensorKit::begin() {
             rtc = NULL;
         }
     }
+
+    pinMode(ALORA_WINDSENSOR_PIN, INPUT);
+    attachInterrupt(digitalPinToInterrupt(ALORA_WINDSENSOR_PIN), aloraWindSensorInterruptHandler, RISING);
 
     pinMode(ALORA_MAGNETIC_SENSOR_PIN, INPUT);
 }
@@ -437,6 +445,19 @@ void AloraSensorKit::readGas(uint16_t& gas, uint16_t& co2) {
 }
 
 /**
+ * Read the windspeed in MPH unit.
+ * @param windspeed the speed of the wind value will be stored in this variable.
+ */
+void AloraSensorKit::readWindSpeed(float& windspeed) {
+    if (aloraWindTimeSinceLastTick != 0) {
+        windspeed = 1000.0 / aloraWindTimeSinceLastTick;
+        windspeed *= 1.492;
+    } else {
+        windspeed = 0.0;
+    }
+}
+
+/**
  * Read all sensors data and store them to he lastSensorData property.
  * @see lastSensorData
  */
@@ -490,6 +511,10 @@ void AloraSensorKit::doAllSensing() {
     int mag;
     readMagneticSensor(mag);
     lastSensorData.magnetic = mag;
+
+    float windspeed;
+    readWindSpeed(windspeed);
+    lastSensorData.windSpeed = windspeed;
 }
 
 /**
@@ -502,4 +527,13 @@ DateTime AloraSensorKit::getDateTime() {
     }
 
     return rtc->now();
+}
+
+/**
+ * Get latest sensor data from Alora board.
+ * @return object of SensorValues struct
+ * @see SensorValues
+ */
+SensorValues AloraSensorKit::getSensorValues() {
+    return lastSensorData;
 }

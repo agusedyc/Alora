@@ -39,10 +39,15 @@ using namespace AllAboutEE;
 #define ALORA_ADC_GAS_HEATER_PIN 13
 #define ALORA_ADC_GAS_CHANNEL 1
 
+#define ALORA_WINDSENSOR_PIN 34
+static uint32_t aloraWindTimeSinceLastTick = 0;
+static uint32_t aloraWindLastTick = 0;
+
+static void aloraWindSensorInterruptHandler();
+
 /**
  * Data read from sensors are stored in this struct
  */
-
 struct SensorValues {
     float T1;           /**< Temperature from BME280 in celcius unit */
     float P;            /**< Pressure from BME280 in hPa unit */
@@ -63,6 +68,7 @@ struct SensorValues {
     float magZ;         /**< Magnometer Z axis */
     float magHeading;   /**< Heading in degrees */
     int magnetic;       /**< Magnetic sensor value */
+    float windSpeed;    /**< Speed of the wind in MPH */
 };
 
 
@@ -81,6 +87,7 @@ public:
     void printSensingTo(Print& print);
     void printSensingTo(String& str);
     DateTime getDateTime();
+    SensorValues getSensorValues();
 
 private:
     Adafruit_BME280* bme280 = NULL;             /**< Object of Adafruit BME280 sensor */
@@ -105,6 +112,7 @@ private:
     void readMagnetometer(float &mx, float &my, float &mz, float &mH);
     void readGyro(float &gx, float &gy, float &gz);
     void readMagneticSensor(int& mag);
+    void readWindSpeed(float& windspeed);
 };
 
 #endif
