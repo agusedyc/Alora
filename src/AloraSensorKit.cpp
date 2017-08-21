@@ -190,11 +190,16 @@ void AloraSensorKit::printSensingTo(String& str) {
     char magnetic[2];
     sprintf(magnetic, "%d", lastSensorData.magnetic);
     char magneticPayloadStr[40];
-    sprintf(magneticPayloadStr, "[Magnetic] %s \r\n", magnetic);
+    sprintf(magneticPayloadStr, "[MAGNETIC] %s \r\n", magnetic);
+
+    char windSpeedStr[9];
+    dtostrf(lastSensorData.windSpeed, 6, 2, windSpeedStr);
+    char windPayloadStr[40];
+    sprintf(windPayloadStr, "[WIND SPEED] Speed = %s MPH", windSpeedStr);
 
     str = String(bme280PayloadStr) + String(hdcPayloadStr) + String(gasPayloadStr);
     str += String(accelPayloadStr) + String(gyroPayloadStr) + String(magPayloadStr);
-    str += String(lightPayloadStr) + String(magneticPayloadStr);
+    str += String(lightPayloadStr) + String(magneticPayloadStr) + String(windPayloadStr);
 }
 
 /**
