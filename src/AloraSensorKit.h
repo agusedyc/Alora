@@ -36,28 +36,37 @@ using namespace AllAboutEE;
 #define ALORA_ADC_GAS_HEATER_PIN 13
 #define ALORA_ADC_GAS_CHANNEL 1
 
+/**
+ * Data read from sensors are stored in this struct
+ */
+
 struct SensorValues {
-    float T1;
-    float P;
-    float H1;
-    float T2;
-    float H2;
-    double lux;
-    uint16_t gas;
-    uint16_t co2;
-    float accelX;
-    float accelY;
-    float accelZ;
-    float gyroX;
-    float gyroY;
-    float gyroZ;
-    float magX;
-    float magY;
-    float magZ;
-    float magHeading;
-    int magnetic;
+    float T1;           /**< Temperature from BME280 in celcius unit */
+    float P;            /**< Pressure from BME280 in hPa unit */
+    float H1;           /**< Humidity from BME280 */
+    float T2;           /**< Temperature from HDC1080 in celcius unit */
+    float H2;           /**< Humidifty from HDC1080 */
+    double lux;         /**< Luminance from TSL2591 */
+    uint16_t gas;       /**< Air quality value from either CCS811 or analog gas sensor */
+    uint16_t co2;       /**< CO2 readgin from CCS811 */
+    float accelX;       /**< Accelerometer X axis */
+    float accelY;       /**< Accelerometer Y axis */
+    float accelZ;       /**< Accelerometer Z axis */
+    float gyroX;        /**< Gyroscope X axis */
+    float gyroY;        /**< Gyroscope Y axis */
+    float gyroZ;        /**< Gyroscope Z axis */
+    float magX;         /**< Magnometer X axis */
+    float magY;         /**< Magnometer Y axis */
+    float magZ;         /**< Magnometer Z axis */
+    float magHeading;   /**< Heading in degrees */
+    int magnetic;       /**< Magnetic sensor value */
 };
 
+
+/**
+ *  Alora Sensor Kit class.
+ *  Main class for reading sensor on Alora board
+ */
 class AloraSensorKit {
 public:
     AloraSensorKit();
@@ -66,20 +75,30 @@ public:
     void begin();
     void run();
     void scanAndPrintI2C(Print& print);
+
+    /**
+     * Print the sensing data in a non-standarized format.
+     * @param print any object which class derived from Print including Serial and String.
+     */
     void printSensingTo(Print& print);
+
+    /**
+     * Print the sensing data in a non-standarized format.
+     * @param str a string where the sensing data will be stored.
+     */
     void printSensingTo(String& str);
 
 private:
-    Adafruit_BME280* bme280 = NULL;
-    ClosedCube_HDC1080* hdc1080 = NULL;
-    Adafruit_TSL2591* tsl2591 = NULL;
-    CCS811* ccs811 = NULL;
-    LSM9DS1* imuSensor = NULL;
-    GpioExpander* ioExpander = NULL;
-    MAX11609* max11609 = NULL;
+    Adafruit_BME280* bme280 = NULL;             /**< Object of Adafruit BME280 sensor */
+    ClosedCube_HDC1080* hdc1080 = NULL;         /**< Object of HDC1080 sensor */
+    Adafruit_TSL2591* tsl2591 = NULL;           /**< Object of Adafruit TSL2591 sensor */
+    CCS811* ccs811 = NULL;                      /**< Object of CCS811 sensor */
+    LSM9DS1* imuSensor = NULL;                  /**< Object of LSM9DS1 sensor */
+    GpioExpander* ioExpander = NULL;            /**< Object of GPIO Expander (SX1509) */
+    MAX11609* max11609 = NULL;                  /**< Object of MAX11609 */
 
-    SensorValues lastSensorData;
-    uint32_t lastSensorQuerryMs = 0;
+    SensorValues lastSensorData;                /**< Object of SensorValues struct. All sensor data are stored in this property */
+    uint32_t lastSensorQuerryMs = 0;            /**< Records the time when the sensor data is read in milliseconds */
 
     void doAllSensing();
     void readBME280(float& T, float& P, float& H);
@@ -89,7 +108,7 @@ private:
     void readGas(uint16_t& gas, uint16_t& co2);
     void readAccelerometer(float &ax, float &ay, float &az);
     void readMagnetometer(float &mx, float &my, float &mz, float &mH);
-    void readGyro(float &ax, float &ay, float &az);
+    void readGyro(float &gx, float &gy, float &gz);
     void readMagneticSensor(int& mag);
 };
 

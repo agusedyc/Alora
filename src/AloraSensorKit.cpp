@@ -1,3 +1,8 @@
+/*
+ * Originally written by Andri Yadi on 8/5/16
+ * Maintained by Alwin Arrasyid
+ */
+
 #include "AloraSensorKit.h"
 
 AloraSensorKit::AloraSensorKit() {
@@ -6,6 +11,9 @@ AloraSensorKit::AloraSensorKit() {
 AloraSensorKit::~AloraSensorKit() {
 }
 
+/**
+ * Initialize Alora board and its sensors.
+ */
 void AloraSensorKit::begin() {
     pinMode(16, OUTPUT);
     digitalWrite(16, HIGH);
@@ -94,9 +102,14 @@ void AloraSensorKit::begin() {
     pinMode(ALORA_MAGNETIC_SENSOR_PIN, INPUT);
 }
 
+/**
+ * Read all sensors value and store the result to a private member.
+ * This function is usually called inside loop() function.
+ */
 void AloraSensorKit::run() {
     doAllSensing();
 }
+
 
 void AloraSensorKit::printSensingTo(Print& print) {
     print.println("Sensing:");
@@ -161,6 +174,10 @@ void AloraSensorKit::printSensingTo(String& str) {
     str += String(lightPayloadStr) + String(magneticPayloadStr);
 }
 
+/**
+  * Scan for I2C devices and print the result.
+  * @param print any object which class derived from Print including Serial and String.
+  */
 void AloraSensorKit::scanAndPrintI2C(Print& print) {
     byte error;
     byte address;
@@ -192,10 +209,20 @@ void AloraSensorKit::scanAndPrintI2C(Print& print) {
     }
 }
 
+/**
+ * Read magnetic sensor.
+ * @param mag magnetic sensor reading value will be stored in this variable.
+ */
 void AloraSensorKit::readMagneticSensor(int& mag) {
     mag = digitalRead(ALORA_MAGNETIC_SENSOR_PIN);
 }
 
+/**
+ * Read accelerometer data from LSM9DS1.
+ * @param ax accelerometer X axis value will be stored in this variable.
+ * @param ay accelerometer Y axis value will be stored in this variable.
+ * @param az accelerometer Z axis value will be stored in this variable.
+ */
 void AloraSensorKit::readAccelerometer(float &ax, float &ay, float &az) {
     if (imuSensor == NULL) {
         ax = 0.0;
@@ -211,6 +238,12 @@ void AloraSensorKit::readAccelerometer(float &ax, float &ay, float &az) {
     az = imuSensor->calcAccel(imuSensor->az);
 }
 
+/**
+ * Read gyroscope data from LSM9DS1.
+ * @param gx gyroscope X axis value will be stored in this variable.
+ * @param gy gyroscope Y axis value will be stored in this variable.
+ * @param gz gyroscope Z axis value will be stored in this variable.
+ */
 void AloraSensorKit::readGyro(float &gx, float &gy, float &gz) {
     if (imuSensor == NULL) {
         gx = 0.0;
@@ -225,6 +258,14 @@ void AloraSensorKit::readGyro(float &gx, float &gy, float &gz) {
     gz = imuSensor->calcGyro(imuSensor->gz);
 }
 
+
+/**
+ * Read magnetometer data from LSM9DS1.
+ * @param mx magnetometer X axis value will be stored in this variable.
+ * @param my magnetometer Y axis value will be stored in this variable.
+ * @param mz magnetometer Z axis value will be stored in this variable.
+ * @param mH magnetometer heading value will be stored in this variable,
+ */
 void AloraSensorKit::readMagnetometer(float &mx, float &my, float &mz, float &mH) {
     if (imuSensor == NULL) {
         mx = 0.0;
@@ -262,6 +303,12 @@ void AloraSensorKit::readMagnetometer(float &mx, float &my, float &mz, float &mH
     mH = heading;
 }
 
+/**
+ * Read data from BME280 sensor.
+ * @param T temperature reading will be stored in this variable.
+ * @param P pressure reading will be stored in this variable.
+ * @param H humidity reading will be stored in this variable.
+ */
 void AloraSensorKit::readBME280(float& T, float& P, float& H) {
     if (bme280 == NULL) {
         T = 0.0;
@@ -276,6 +323,11 @@ void AloraSensorKit::readBME280(float& T, float& P, float& H) {
     H = bme280->readHumidity();
 }
 
+/**
+ * Read data from HDC1080 sensor.
+ * @param T temperature reading will be stored in this variable
+ * @param H humidity reading will be stored in this variable
+ */
 void AloraSensorKit::readHDC1080(float& T, float& H) {
     if (hdc1080 == NULL) {
         T = 0.0;
@@ -288,11 +340,18 @@ void AloraSensorKit::readHDC1080(float& T, float& H) {
     H = hdc1080->readHumidity();
 }
 
+/**
+ * Read luminance value from TSL2591.
+ * @param lux the luminance value will be stored in this variable.
+ */
 void AloraSensorKit::readTSL2591(double &lux) {
     uint16_t x = tsl2591->getLuminosity(TSL2591_VISIBLE);
     lux = (double)x;
 }
 
+/**
+ * Configure the TSL2591 sensor
+ */
 void AloraSensorKit::configureTSL2591Sensor() {
     // You can change the gain on the fly, to adapt to brighter/dimmer light situations
     //tsl.setGain(TSL2591_GAIN_LOW);    // 1x gain (bright light)
@@ -334,6 +393,11 @@ void AloraSensorKit::configureTSL2591Sensor() {
     Serial.println(F(""));
 }
 
+/**
+ * Read data from either CCS811 or analog gas sensor.
+ * @param gas the TVOC value will be stored in this variable.
+ * @param co2 the CO2 reading from CCS811 will be stored in this variable. If CCS811 is not used, the value will be 0.
+ */
 void AloraSensorKit::readGas(uint16_t& gas, uint16_t& co2) {
 #if ALORA_SENSOR_USE_CCS811 == 1
     if (ccs811 == NULL) {
@@ -357,6 +421,10 @@ void AloraSensorKit::readGas(uint16_t& gas, uint16_t& co2) {
 #endif
 }
 
+/**
+ * Read all sensors data and store them to he lastSensorData property.
+ * @see lastSensorData
+ */
 void AloraSensorKit::doAllSensing() {
     if (millis() - lastSensorQuerryMs < ALORA_SENSOR_QUERY_INTERVAL) {
         return;
