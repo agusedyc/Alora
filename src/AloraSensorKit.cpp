@@ -277,6 +277,8 @@ void AloraSensorKit::readGyro(float &gx, float &gy, float &gz) {
         gx = 0.0;
         gy = 0.0;
         gz = 0.0;
+
+        return;
     }
 
     imuSensor->readGyro();
@@ -431,6 +433,8 @@ void AloraSensorKit::readGas(uint16_t& gas, uint16_t& co2) {
     if (ccs811 == NULL) {
         gas = 0;
         co2 = 0;
+
+        return;
     }
 
     if (!ccs811->dataAvailable()) { 
