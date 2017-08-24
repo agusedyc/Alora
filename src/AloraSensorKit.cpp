@@ -20,10 +20,11 @@ AloraSensorKit::~AloraSensorKit() {
  * Initialize Alora board and its sensors.
  */
 void AloraSensorKit::begin() {
-    pinMode(16, OUTPUT);
-    digitalWrite(16, HIGH);
+    pinMode(ALORA_ENABLE_PIN, OUTPUT);
+    digitalWrite(ALORA_ENABLE_PIN, HIGH);
 
     if (bme280 == NULL) {
+        Serial.println("[DEBUG] Initializing BME280");
         bme280 = new Adafruit_BME280();
 
         if (!bme280->begin()) {
@@ -34,22 +35,32 @@ void AloraSensorKit::begin() {
     }
 
     if (hdc1080 == NULL) {
+        Serial.println("[DEBUG] Initializing HDC1080");
         hdc1080 = new ClosedCube_HDC1080();
         hdc1080->begin(ALORA_HDC1080_ADDRESS);
     }
 
     if (tsl2591 == NULL) {
+        Serial.println("[DEBUG] Initializing TSL2591");
         tsl2591 = new Adafruit_TSL2591(2591);
-        configureTSL2591Sensor();
+        if (!tsl2591->begin()) {
+            Serial.println("[ERROR] Failed to initialize TSL2591");
+            delete tsl2591;
+            tsl2591 = NULL;
+        } else {
+            configureTSL2591Sensor();
+        }
     }
 
     if (max11609 == NULL) {
+        Serial.println("[DEBUG] Initializing MAX11609");
         max11609 = new MAX11609();
         max11609->begin(AllAboutEE::MAX11609::REF_VDD);
     }
 
 #if ALORA_SENSOR_USE_CCS811 == 1
     if (ccs811 == NULL) {
+        Serial.println("[DEBUG] Initializing CCS811");
         ccs811 = new CCS811(ALORA_I2C_ADDRESS_CCS811);
 
         CCS811Core::status returnCode = ccs811->begin();
@@ -69,6 +80,7 @@ void AloraSensorKit::begin() {
 #endif
 
     if (imuSensor == NULL) {
+        Serial.println("[DEBUG] Initializing IMU sensor");
         imuSensor = new LSM9DS1();
         imuSensor->settings.device.commInterface =IMU_MODE_I2C;
         imuSensor->settings.device.mAddress = ALORA_I2C_ADDRESS_IMU_M;
@@ -82,6 +94,7 @@ void AloraSensorKit::begin() {
     }
 
     if (ioExpander == NULL) {
+        Serial.println("[DEBUG] Initializing IO Expander");
         ioExpander = new GpioExpander();
         if (ioExpander->begin()) {
             ioExpander->pinMode(4, OUTPUT);
@@ -97,6 +110,9 @@ void AloraSensorKit::begin() {
 
             ioExpander->pinMode(6, OUTPUT);
             ioExpander->digitalWrite(6, HIGH);
+
+            ioExpander->pinMode(0, OUTPUT);
+            ioExpander->digitalWrite(0, HIGH);
         } else {
             Serial.println("[ERROR] Failed to initialize SX1509 IO Expander");
             delete ioExpander;
@@ -105,8 +121,10 @@ void AloraSensorKit::begin() {
     }
 
     if (rtc == NULL) {
+        Serial.println("[DEBUG] Initializing RTC");
         rtc = new RTC_DS3231();
         if (!rtc->begin()) {
+            Serial.println("[ERROR] Failed initializing RTC");
             delete rtc;
             rtc = NULL;
         }
@@ -207,6 +225,7 @@ void AloraSensorKit::printSensingTo(String& str) {
   * @param print any object which class derived from Print including Serial and String.
   */
 void AloraSensorKit::scanAndPrintI2C(Print& print) {
+    Wire.begin();
     byte error;
     byte address;
 
@@ -375,6 +394,11 @@ void AloraSensorKit::readHDC1080(float& T, float& H) {
  * @param lux the luminance value will be stored in this variable.
  */
 void AloraSensorKit::readTSL2591(double &lux) {
+    if (tsl2591 == NULL) {
+        lux = 0.0;
+        return;
+    }
+
     uint16_t x = tsl2591->getLuminosity(TSL2591_VISIBLE);
     lux = (double)x;
 }
@@ -543,6 +567,18 @@ DateTime AloraSensorKit::getDateTime() {
  * @return object of SensorValues struct
  * @see SensorValues
  */
-SensorValues AloraSensorKit::getSensorValues() {
+SensorValues& AloraSensorKit::getLastSensorData() {
     return lastSensorData;
+}
+
+/**
+ * Read analog data from MAX11609 (ADC)
+ * @return read value
+ */
+uint16_t AloraSensorKit::readADC(uint8_t channel) {
+    if (max11609 == NULL) {
+        return 0;
+    }
+
+    return max11609->read(channel);
 }

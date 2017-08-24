@@ -29,6 +29,10 @@ using namespace AllAboutEE;
 #define ALORA_SENSOR_QUERY_INTERVAL 300
 #endif
 
+#ifndef ALORA_ENABLE_PIN
+#define ALORA_ENABLE_PIN 16
+#endif
+
 #define ALORA_HDC1080_ADDRESS 0x40
 #define ALORA_I2C_ADDRESS_CCS811 0x5A
 #define ALORA_I2C_ADDRESS_IMU_M 0x1E
@@ -86,8 +90,9 @@ public:
     void scanAndPrintI2C(Print& print);
     void printSensingTo(Print& print);
     void printSensingTo(String& str);
+    uint16_t readADC(uint8_t channel);
     DateTime getDateTime();
-    SensorValues getSensorValues();
+    SensorValues& getLastSensorData();
 
 private:
     Adafruit_BME280* bme280 = NULL;             /**< Object of Adafruit BME280 sensor */
