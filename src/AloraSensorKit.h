@@ -10,7 +10,7 @@
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BME280.h>
 #include <ClosedCube_HDC1080.h>
-#include <Adafruit_TSL2591.h>
+#include "Adafruit_TSL2591.h"
 #include <SparkFunCCS811.h>
 #include "SparkFunLSM9DS1.h"
 #include "GpioExpander.h"
