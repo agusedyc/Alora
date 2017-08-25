@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gpioexpander',['GpioExpander',['../classGpioExpander.html',1,'']]]
+  ['devicesettings',['deviceSettings',['../structdeviceSettings.html',1,'']]]
 ];

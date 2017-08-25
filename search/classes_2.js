@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['sensorvalues',['SensorValues',['../structSensorValues.html',1,'']]]
+  ['gpioexpander',['GpioExpander',['../classGpioExpander.html',1,'']]],
+  ['gyrosettings',['gyroSettings',['../structgyroSettings.html',1,'']]]
 ];

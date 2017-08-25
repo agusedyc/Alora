@@ -38,6 +38,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -71,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -148,11 +150,11 @@ Private Attributes</h2></td></tr>
 <tr class="separator:aa5d359099b87f2b7099ea294721d3e28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ffb2758a86dbe3deeb962a614573ff6"><td class="memItemLeft" align="right" valign="top">CCS811 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAloraSensorKit.html#a7ffb2758a86dbe3deeb962a614573ff6">ccs811</a> = NULL</td></tr>
 <tr class="separator:a7ffb2758a86dbe3deeb962a614573ff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51f47026865f2f62eb8c1474bb928bdd"><td class="memItemLeft" align="right" valign="top">LSM9DS1 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAloraSensorKit.html#a51f47026865f2f62eb8c1474bb928bdd">imuSensor</a> = NULL</td></tr>
+<tr class="memitem:a51f47026865f2f62eb8c1474bb928bdd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLSM9DS1.html">LSM9DS1</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAloraSensorKit.html#a51f47026865f2f62eb8c1474bb928bdd">imuSensor</a> = NULL</td></tr>
 <tr class="separator:a51f47026865f2f62eb8c1474bb928bdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac39ee7a439424a9c1afe283da61fe702"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classGpioExpander.html">GpioExpander</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAloraSensorKit.html#ac39ee7a439424a9c1afe283da61fe702">ioExpander</a> = NULL</td></tr>
 <tr class="separator:ac39ee7a439424a9c1afe283da61fe702"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84ecec727306e4c6deb9a14a8853da33"><td class="memItemLeft" align="right" valign="top">MAX11609 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAloraSensorKit.html#a84ecec727306e4c6deb9a14a8853da33">max11609</a> = NULL</td></tr>
+<tr class="memitem:a84ecec727306e4c6deb9a14a8853da33"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAllAboutEE_1_1MAX11609.html">MAX11609</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAloraSensorKit.html#a84ecec727306e4c6deb9a14a8853da33">max11609</a> = NULL</td></tr>
 <tr class="separator:a84ecec727306e4c6deb9a14a8853da33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b624874aaeea0b4e099ebf95c2d7cf8"><td class="memItemLeft" align="right" valign="top">RTC_DS3231 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAloraSensorKit.html#a4b624874aaeea0b4e099ebf95c2d7cf8">rtc</a> = NULL</td></tr>
 <tr class="separator:a4b624874aaeea0b4e099ebf95c2d7cf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -347,7 +349,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Read accelerometer data from LSM9DS1. </p>
+<p>Read accelerometer data from <a class="el" href="classLSM9DS1.html">LSM9DS1</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ax</td><td>accelerometer X axis value will be stored in this variable. </td></tr>
@@ -505,7 +507,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Read gyroscope data from LSM9DS1. </p>
+<p>Read gyroscope data from <a class="el" href="classLSM9DS1.html">LSM9DS1</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">gx</td><td>gyroscope X axis value will be stored in this variable. </td></tr>
@@ -633,7 +635,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Read magnetometer data from LSM9DS1. </p>
+<p>Read magnetometer data from <a class="el" href="classLSM9DS1.html">LSM9DS1</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">mx</td><td>magnetometer X axis value will be stored in this variable. </td></tr>
@@ -819,7 +821,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">LSM9DS1* AloraSensorKit::imuSensor = NULL</td>
+          <td class="memname"><a class="el" href="classLSM9DS1.html">LSM9DS1</a>* AloraSensorKit::imuSensor = NULL</td>
         </tr>
       </table>
   </td>
@@ -828,7 +830,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Object of LSM9DS1 sensor </p>
+<p>Object of <a class="el" href="classLSM9DS1.html">LSM9DS1</a> sensor </p>
 
 </div>
 </div>
@@ -903,7 +905,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">MAX11609* AloraSensorKit::max11609 = NULL</td>
+          <td class="memname"><a class="el" href="classAllAboutEE_1_1MAX11609.html">MAX11609</a>* AloraSensorKit::max11609 = NULL</td>
         </tr>
       </table>
   </td>
@@ -965,7 +967,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Aug 24 2017 13:19:00 for Alora Library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Aug 25 2017 10:37:06 for Alora Library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

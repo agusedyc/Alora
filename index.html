@@ -38,6 +38,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -64,7 +66,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -79,15 +81,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Library for reading sensors data from Alora board v2. Visit <a href="https://shop.makestro.com/product/alorav2/">this page</a> to learn more about Alora board.</p>
-<h2>Supported Development Boards</h2>
-<p>Here is the list of supported development boards by this library:</p>
+<h2>Tested Development Boards</h2>
+<p>Here is the list of tested development boards with this library:</p>
 <ul>
-<li><a href="https://shop.makestro.com/product/espectro32/">ESPectro32</a> </li>
+<li><a href="https://shop.makestro.com/product/espectro32/">ESPectro32</a></li>
+</ul>
+<h2>Documentation</h2>
+<p>You can see the documentation of this library by clicking <a href="https://dycodex.github.io/Alora">this link</a></p>
+<h2>License</h2>
+<p>This library is licensed under MIT License. See /LICENSE.md "LICENSE.md" to read more about the license.</p>
+<p>Licenses of open source libraries included in this repository:</p>
+<ul>
+<li><a href="https://github.com/sparkfun/SparkFun_LSM9DS1_Arduino_Library">SparkFun LSM9DS1 Arduino Library</a> - Open Commons Share-alike 3.0. See https://github.com/sparkfun/SparkFun_LSM9DS1_Arduino_Library/blob/master/LICENSE.md "here".</li>
+<li><a href="https://github.com/AllAboutEE/MAX11609EEE-Breakout-Board/tree/master/Software/Arduino/AllAboutEE-MAX11609-Library">All About EE MAX 11609</a> - MIT License. See <a href="https://github.com/AllAboutEE/MAX11609EEE-Breakout-Board/blob/master/Software/LICENSE">here</a>. </li>
 </ul>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Aug 24 2017 13:19:00 for Alora Library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Aug 25 2017 10:37:06 for Alora Library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

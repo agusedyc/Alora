@@ -38,6 +38,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -68,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,13 +103,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;ClosedCube_HDC1080.h&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;Adafruit_TSL2591.h&gt;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;SparkFunCCS811.h&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;SparkFunLSM9DS1.h&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;SparkFunLSM9DS1.h&quot;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;GpioExpander.h&quot;</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;RTClib.h&gt;</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#undef SECONDS_PER_DAY</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;AllAboutEE_MAX11609.h&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;AllAboutEE_MAX11609.h&quot;</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">using namespace </span>AllAboutEE;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#ifndef ALORA_SENSOR_USE_CCS811</span></div>
@@ -181,9 +183,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="classAloraSensorKit.html#a5b6fdcf01312e8b7349bc2cb3d2795c7">   99</a></span>&#160;    ClosedCube_HDC1080* hdc1080 = NULL;         </div>
 <div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="classAloraSensorKit.html#aa5d359099b87f2b7099ea294721d3e28">  100</a></span>&#160;    Adafruit_TSL2591* tsl2591 = NULL;           </div>
 <div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="classAloraSensorKit.html#a7ffb2758a86dbe3deeb962a614573ff6">  101</a></span>&#160;    CCS811* ccs811 = NULL;                      </div>
-<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="classAloraSensorKit.html#a51f47026865f2f62eb8c1474bb928bdd">  102</a></span>&#160;    LSM9DS1* imuSensor = NULL;                  </div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="classAloraSensorKit.html#a51f47026865f2f62eb8c1474bb928bdd">  102</a></span>&#160;    <a class="code" href="classLSM9DS1.html">LSM9DS1</a>* imuSensor = NULL;                  </div>
 <div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="classAloraSensorKit.html#ac39ee7a439424a9c1afe283da61fe702">  103</a></span>&#160;    <a class="code" href="classGpioExpander.html">GpioExpander</a>* ioExpander = NULL;            </div>
-<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="classAloraSensorKit.html#a84ecec727306e4c6deb9a14a8853da33">  104</a></span>&#160;    MAX11609* max11609 = NULL;                  </div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="classAloraSensorKit.html#a84ecec727306e4c6deb9a14a8853da33">  104</a></span>&#160;    <a class="code" href="classAllAboutEE_1_1MAX11609.html">MAX11609</a>* max11609 = NULL;                  </div>
 <div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="classAloraSensorKit.html#a4b624874aaeea0b4e099ebf95c2d7cf8">  105</a></span>&#160;    RTC_DS3231* rtc = NULL;                     </div>
 <div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="classAloraSensorKit.html#a25451b0eb48032beb8c5d749c0acd792">  107</a></span>&#160;    <a class="code" href="structSensorValues.html">SensorValues</a> <a class="code" href="classAloraSensorKit.html#a25451b0eb48032beb8c5d749c0acd792">lastSensorData</a>;                </div>
 <div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="classAloraSensorKit.html#a89c817196eb98116dc3f871d86c06929">  108</a></span>&#160;    uint32_t lastSensorQuerryMs = 0;            </div>
@@ -201,6 +203,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;};</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classLSM9DS1_html"><div class="ttname"><a href="classLSM9DS1.html">LSM9DS1</a></div><div class="ttdef"><b>Definition:</b> SparkFunLSM9DS1.h:45</div></div>
 <div class="ttc" id="structSensorValues_html_a55a8ce9f40a9b361dbd4c3ce17cef3ac"><div class="ttname"><a href="structSensorValues.html#a55a8ce9f40a9b361dbd4c3ce17cef3ac">SensorValues::magZ</a></div><div class="ttdeci">float magZ</div><div class="ttdef"><b>Definition:</b> AloraSensorKit.h:72</div></div>
 <div class="ttc" id="structSensorValues_html_a048b6e103db0c350ea373d1f7a73ff29"><div class="ttname"><a href="structSensorValues.html#a048b6e103db0c350ea373d1f7a73ff29">SensorValues::accelZ</a></div><div class="ttdeci">float accelZ</div><div class="ttdef"><b>Definition:</b> AloraSensorKit.h:66</div></div>
 <div class="ttc" id="structSensorValues_html_a871e05b79edbe269791e427f78e77cea"><div class="ttname"><a href="structSensorValues.html#a871e05b79edbe269791e427f78e77cea">SensorValues::gyroY</a></div><div class="ttdeci">float gyroY</div><div class="ttdef"><b>Definition:</b> AloraSensorKit.h:68</div></div>
@@ -208,6 +211,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="classAloraSensorKit_html"><div class="ttname"><a href="classAloraSensorKit.html">AloraSensorKit</a></div><div class="ttdef"><b>Definition:</b> AloraSensorKit.h:83</div></div>
 <div class="ttc" id="structSensorValues_html_a5a3dfbcc12ed8cfdf209d267820306d2"><div class="ttname"><a href="structSensorValues.html#a5a3dfbcc12ed8cfdf209d267820306d2">SensorValues::gyroZ</a></div><div class="ttdeci">float gyroZ</div><div class="ttdef"><b>Definition:</b> AloraSensorKit.h:69</div></div>
 <div class="ttc" id="structSensorValues_html_a7e789f78113a3a535ac583b225b1128d"><div class="ttname"><a href="structSensorValues.html#a7e789f78113a3a535ac583b225b1128d">SensorValues::P</a></div><div class="ttdeci">float P</div><div class="ttdef"><b>Definition:</b> AloraSensorKit.h:57</div></div>
+<div class="ttc" id="classAllAboutEE_1_1MAX11609_html"><div class="ttname"><a href="classAllAboutEE_1_1MAX11609.html">AllAboutEE::MAX11609</a></div><div class="ttdef"><b>Definition:</b> AllAboutEE_MAX11609.h:12</div></div>
 <div class="ttc" id="classGpioExpander_html"><div class="ttname"><a href="classGpioExpander.html">GpioExpander</a></div><div class="ttdef"><b>Definition:</b> GpioExpander.h:36</div></div>
 <div class="ttc" id="structSensorValues_html_a3bfe99e930c01e46654bda74bbbc09c0"><div class="ttname"><a href="structSensorValues.html#a3bfe99e930c01e46654bda74bbbc09c0">SensorValues::magY</a></div><div class="ttdeci">float magY</div><div class="ttdef"><b>Definition:</b> AloraSensorKit.h:71</div></div>
 <div class="ttc" id="structSensorValues_html_af66a53f9f2945bf6982bddb565e451da"><div class="ttname"><a href="structSensorValues.html#af66a53f9f2945bf6982bddb565e451da">SensorValues::accelY</a></div><div class="ttdeci">float accelY</div><div class="ttdef"><b>Definition:</b> AloraSensorKit.h:65</div></div>
@@ -228,7 +232,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Aug 24 2017 13:19:00 for Alora Library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Aug 25 2017 10:37:06 for Alora Library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

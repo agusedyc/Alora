@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['read',['read',['../classAllAboutEE_1_1MAX11609.html#a817b72d27c8e22007f79e8e9148a366b',1,'AllAboutEE::MAX11609']]],
   ['readaccelerometer',['readAccelerometer',['../classAloraSensorKit.html#a2e8ed3be0bee6b624d9646ca8afa4d58',1,'AloraSensorKit']]],
   ['readadc',['readADC',['../classAloraSensorKit.html#a7730c2034fd874d374b04fa47bfc2033',1,'AloraSensorKit']]],
   ['readbme280',['readBME280',['../classAloraSensorKit.html#ae0f70dc3cbf2ddc8802407dd674a531a',1,'AloraSensorKit']]],
