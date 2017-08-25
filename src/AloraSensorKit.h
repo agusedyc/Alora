@@ -6,6 +6,7 @@
 #ifndef ALORA_ALORASENSORKIT_H
 #define ALORA_ALORASENSORKIT_H
 
+#include <Wire.h>
 #include <Arduino.h>
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BME280.h>
