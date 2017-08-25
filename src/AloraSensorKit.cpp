@@ -20,6 +20,7 @@ AloraSensorKit::~AloraSensorKit() {
  * Initialize Alora board and its sensors.
  */
 void AloraSensorKit::begin() {
+    Wire.begin();
     pinMode(ALORA_ENABLE_PIN, OUTPUT);
     digitalWrite(ALORA_ENABLE_PIN, HIGH);
 
