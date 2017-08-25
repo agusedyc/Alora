@@ -23,6 +23,8 @@ void AloraSensorKit::begin() {
     pinMode(ALORA_ENABLE_PIN, OUTPUT);
     digitalWrite(ALORA_ENABLE_PIN, HIGH);
 
+    delay(1000);
+
     if (bme280 == NULL) {
         Serial.println("[DEBUG] Initializing BME280");
         bme280 = new Adafruit_BME280();
@@ -58,6 +60,35 @@ void AloraSensorKit::begin() {
         max11609->begin(AllAboutEE::MAX11609::REF_VDD);
     }
 
+    if (ioExpander == NULL) {
+        Serial.println("[DEBUG] Initializing IO Expander");
+        ioExpander = new GpioExpander();
+        if (ioExpander->begin()) {
+            ioExpander->pinMode(4, OUTPUT);
+            ioExpander->digitalWrite(4, HIGH);
+
+            // IMU enable
+            ioExpander->pinMode(7, OUTPUT);
+            ioExpander->digitalWrite(7, HIGH);
+
+            // GPS enable
+            ioExpander->pinMode(12, OUTPUT);
+            ioExpander->digitalWrite(12, HIGH);
+
+            // enable CCS
+            ioExpander->pinMode(6, OUTPUT);
+            ioExpander->digitalWrite(6, HIGH);
+
+            // wake CCS
+            ioExpander->pinMode(0, OUTPUT);
+            ioExpander->digitalWrite(0, HIGH);
+        } else {
+            Serial.println("[ERROR] Failed to initialize SX1509 IO Expander");
+            delete ioExpander;
+            ioExpander = NULL;
+        }
+    }
+
 #if ALORA_SENSOR_USE_CCS811 == 1
     if (ccs811 == NULL) {
         Serial.println("[DEBUG] Initializing CCS811");
@@ -90,33 +121,6 @@ void AloraSensorKit::begin() {
             Serial.println("[ERROR] Failed initializing IMU sensor");
             delete imuSensor;
             imuSensor = NULL;
-        }
-    }
-
-    if (ioExpander == NULL) {
-        Serial.println("[DEBUG] Initializing IO Expander");
-        ioExpander = new GpioExpander();
-        if (ioExpander->begin()) {
-            ioExpander->pinMode(4, OUTPUT);
-            ioExpander->digitalWrite(4, HIGH);
-
-            // IMU enable
-            ioExpander->pinMode(7, OUTPUT);
-            ioExpander->digitalWrite(7, HIGH);
-
-            // GPS enable
-            ioExpander->pinMode(12, OUTPUT);
-            ioExpander->digitalWrite(12, HIGH);
-
-            ioExpander->pinMode(6, OUTPUT);
-            ioExpander->digitalWrite(6, HIGH);
-
-            ioExpander->pinMode(0, OUTPUT);
-            ioExpander->digitalWrite(0, HIGH);
-        } else {
-            Serial.println("[ERROR] Failed to initialize SX1509 IO Expander");
-            delete ioExpander;
-            ioExpander = NULL;
         }
     }
 

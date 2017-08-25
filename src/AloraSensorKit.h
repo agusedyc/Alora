@@ -12,13 +12,13 @@
 #include <ClosedCube_HDC1080.h>
 #include <Adafruit_TSL2591.h>
 #include <SparkFunCCS811.h>
-#include <SparkFunLSM9DS1.h>
+#include "SparkFunLSM9DS1.h"
 #include "GpioExpander.h"
 
 #include <RTClib.h>
 #undef SECONDS_PER_DAY
 
-#include <AllAboutEE_MAX11609.h>
+#include "AllAboutEE_MAX11609.h"
 using namespace AllAboutEE;
 
 #ifndef ALORA_SENSOR_USE_CCS811
