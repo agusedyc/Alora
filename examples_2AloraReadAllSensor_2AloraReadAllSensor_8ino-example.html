@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Alora Library: Member List</title>
+<title>Alora Library: examples/AloraReadAllSensor/AloraReadAllSensor.ino</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -40,7 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
-      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li><a href="examples.html"><span>Examples</span></a></li>
       <li>
@@ -61,14 +61,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
-  <div id="navrow2" class="tabs2">
-    <ul class="tablist">
-      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
-      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
-      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
-    </ul>
-  </div>
+</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -83,17 +76,44 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">temperatureSettings Member List</div>  </div>
+<div class="title">examples/AloraReadAllSensor/AloraReadAllSensor.ino</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>This is the complete list of members for <a class="el" href="structtemperatureSettings.html">temperatureSettings</a>, including all inherited members.</p>
-<table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>enabled</b> (defined in <a class="el" href="structtemperatureSettings.html">temperatureSettings</a>)</td><td class="entry"><a class="el" href="structtemperatureSettings.html">temperatureSettings</a></td><td class="entry"></td></tr>
-</table></div><!-- contents -->
+<p>Alora Sensor Kit class. Main class for reading sensor on Alora board</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Arduino.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;Wire.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;AloraSensorKit.h&gt;</span></div>
+<div class="line"></div>
+<div class="line"><a name="_a0"></a><a class="code" href="classAloraSensorKit.html">AloraSensorKit</a> sensorKit;</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">void</span> setup() {</div>
+<div class="line">    <span class="comment">// NOTE: in case the process hang right after initializing alora library, uncomment this line below:</span></div>
+<div class="line">    <span class="comment">// Wire.begin();</span></div>
+<div class="line"></div>
+<div class="line">    Serial.<a name="a1"></a><a class="code" href="classAloraSensorKit.html#a459b744a0d67cd49c8f0d99e6473ced5">begin</a>(9600);</div>
+<div class="line">    sensorKit.<a class="code" href="classAloraSensorKit.html#a459b744a0d67cd49c8f0d99e6473ced5">begin</a>();</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">void</span> loop() {</div>
+<div class="line">    <span class="comment">// read all sensors</span></div>
+<div class="line">    sensorKit.<a name="a2"></a><a class="code" href="classAloraSensorKit.html#a261e598e30465e20912b5e6d49c247fb">run</a>();</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">// get sensor values</span></div>
+<div class="line">    <a name="_a3"></a><a class="code" href="structSensorValues.html">SensorValues</a> sensorData = sensorKit.<a name="a4"></a><a class="code" href="classAloraSensorKit.html#aeba641828b78bee31ac57c2987070928">getLastSensorData</a>();</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">// sensorData.T1 and sensorData.T2 are temperature sensor data</span></div>
+<div class="line">    Serial.print(<span class="stringliteral">&quot;Temperature data:&quot;</span>);</div>
+<div class="line">    Serial.println(sensorData.<a name="a5"></a><a class="code" href="structSensorValues.html#afb53989adfcc142d6e0cf1f610507d7c">T1</a>);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">// sensorData.H1 and sensorData.H2 are humidity sensor data</span></div>
+<div class="line">    Serial.println(<span class="stringliteral">&quot;Humidity data:&quot;</span>);</div>
+<div class="line">    Serial.println(sensorData.<a name="a6"></a><a class="code" href="structSensorValues.html#a4c5409ff1f358b85e8288d3ec4ce911e">H1</a>);</div>
+<div class="line"></div>
+<div class="line">    delay(1000);</div>
+<div class="line">}</div>
+</div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated on Sat Aug 26 2017 16:42:18 for Alora Library by &#160;<a href="http://www.doxygen.org/index.html">
