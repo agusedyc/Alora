@@ -14,6 +14,41 @@ AloraSensorKit::AloraSensorKit() {
 }
 
 AloraSensorKit::~AloraSensorKit() {
+    if (ccs811 != NULL) {
+        delete ccs811;
+    }
+
+    if (bme280 != NULL) {
+        delete bme280;
+    }
+
+    if (tsl2591 != NULL) {
+        delete tsl2591;
+    }
+
+    if (ioExpander != NULL) {
+        delete ioExpander;
+    }
+
+    if (max11609 != NULL) {
+        delete max11609;
+    }
+
+    if (hdc1080 != NULL) {
+        delete hdc1080;
+    }
+
+    if (imuSensor != NULL) {
+        delete imuSensor;
+    }
+
+    if (rtc != NULL) {
+        delete rtc;
+    }
+
+    if (gps != NULL) {
+        delete gps;
+    }
 }
 
 /**
@@ -24,6 +59,10 @@ void AloraSensorKit::begin() {
     digitalWrite(ALORA_ENABLE_PIN, HIGH);
 
     delay(1000);
+
+    if (gps == NULL) {
+        gps = new NMEAGPS();
+    }
 
     if (bme280 == NULL) {
         Serial.println("[DEBUG] Initializing BME280");
@@ -552,6 +591,8 @@ void AloraSensorKit::doAllSensing() {
     float windspeed;
     readWindSpeed(windspeed);
     lastSensorData.windSpeed = windspeed;
+
+    readGPS(lastSensorData.gpsFix);
 }
 
 /**
@@ -585,4 +626,32 @@ uint16_t AloraSensorKit::readADC(uint8_t channel) {
     }
 
     return max11609->read(channel);
+}
+
+/**
+ * Initialize GPS
+ */
+void AloraSensorKit::initGPS(Stream* gpsStream) {
+    this->gpsStream = gpsStream;
+}
+
+/**
+ * Read GPS location data
+ */
+void AloraSensorKit::readGPS(gps_fix& fix) {
+    if (gpsStream == NULL || gps == NULL) {
+        return;
+    }
+
+    while (gps->available(*gpsStream)) {
+        fix = gps->read();
+    }
+}
+
+/**
+ * Get NMEAGPS object
+ * @return NMEAGPS object of the GPS
+ */
+NMEAGPS* AloraSensorKit::getGPSObject() {
+    return this->gps;
 }

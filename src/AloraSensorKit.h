@@ -11,6 +11,8 @@
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BME280.h>
 #include <ClosedCube_HDC1080.h>
+#include <NMEAGPS.h>
+#include <Streamers.h>
 #include "Adafruit_TSL2591.h"
 #include <SparkFunCCS811.h>
 #include "SparkFunLSM9DS1.h"
@@ -74,6 +76,7 @@ struct SensorValues {
     float magHeading;   /**< Heading in degrees */
     int magnetic;       /**< Magnetic sensor value */
     float windSpeed;    /**< Speed of the wind in MPH */
+    gps_fix gpsFix;     /**< GPS fix information */
 };
 
 
@@ -81,6 +84,7 @@ struct SensorValues {
  *  Alora Sensor Kit class.
  *  Main class for reading sensor on Alora board
  *  \example examples/AloraReadAllSensor/AloraReadAllSensor.ino
+ *  \example examples/AloraReadGPS/AloraReadGPS.ino
  */
 class AloraSensorKit {
 public:
@@ -95,8 +99,12 @@ public:
     uint16_t readADC(uint8_t channel);
     DateTime getDateTime();
     SensorValues& getLastSensorData();
+    void initGPS(Stream* gpsStream);
+    NMEAGPS* getGPSObject();
 
 private:
+    NMEAGPS* gps = NULL;
+    Stream* gpsStream = NULL;
     Adafruit_BME280* bme280 = NULL;             /**< Object of Adafruit BME280 sensor */
     ClosedCube_HDC1080* hdc1080 = NULL;         /**< Object of HDC1080 sensor */
     Adafruit_TSL2591* tsl2591 = NULL;           /**< Object of Adafruit TSL2591 sensor */
@@ -120,6 +128,7 @@ private:
     void readGyro(float &gx, float &gy, float &gz);
     void readMagneticSensor(int& mag);
     void readWindSpeed(float& windspeed);
+    void readGPS(gps_fix& fix);
 };
 
 #endif

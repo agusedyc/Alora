@@ -24,8 +24,13 @@ You have to download these libraries to your `Documents/Arduino/libraries` or `$
 4. [SparkFun CCS811 Library](https://github.com/sparkfun/SparkFun_CCS811_Arduino_Library)
 5. [SparkFun SX1509 Library](https://github.com/sparkfun/SparkFun_SX1509_Arduino_Library)
 6. [RTCLib](https://github.com/adafruit/RTClib)
+7. [NeoGPS](https://github.com/SlashDevin/NeoGPS)
 
 Then you download this library to the same directory as above.
+
+## Using with PlatformIO
+
+You only need to install this library, PlatformIO will install the dependencies for you.
 
 ## License
 
