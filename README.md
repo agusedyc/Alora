@@ -14,6 +14,18 @@ Here is the list of tested development boards with this library:
 
 You can see the documentation of this library by clicking [this link](https://dycodex.github.io/Alora)
 
+## Using with Arduino IDE
+
+You have to download these libraries to your `Documents/Arduino/libraries` or `$HOME/Arduino/libraries`:
+
+1. [Adafruit BME280 Library](https://github.com/adafruit/Adafruit_BME280_Library)
+2. [Adafruit Unified Sensor](https://github.com/adafruit/Adafruit_Sensor)
+3. [ClosedCube HDC1080](https://github.com/closedcube/ClosedCube_HDC1080_Arduino)
+4. [SparkFun CCS811 Library](https://github.com/sparkfun/SparkFun_CCS811_Arduino_Library)
+5. [SparkFun SX1509 Library](https://github.com/sparkfun/SparkFun_SX1509_Arduino_Library)
+6. [RTCLib](https://github.com/adafruit/RTClib)
+
+Then you download this library to the same directory as above.
 
 ## License
 
