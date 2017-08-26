@@ -80,6 +80,7 @@ struct SensorValues {
 /**
  *  Alora Sensor Kit class.
  *  Main class for reading sensor on Alora board
+ *  \example examples/AloraReadAllSensor/AloraReadAllSensor.ino
  */
 class AloraSensorKit {
 public:
