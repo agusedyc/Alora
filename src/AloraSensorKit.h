@@ -47,10 +47,6 @@ using namespace AllAboutEE;
 #define ALORA_ADC_GAS_CHANNEL 1
 
 #define ALORA_WINDSENSOR_PIN 34
-static uint32_t aloraWindTimeSinceLastTick = 0;
-static uint32_t aloraWindLastTick = 0;
-
-static void aloraWindSensorInterruptHandler();
 
 /**
  * Data read from sensors are stored in this struct
