@@ -33,7 +33,7 @@ using namespace AllAboutEE;
     #define ALORA_IMU_SENSOR AloraIMULSM9DS1Adapter
 #endif
 
-/** By default enable CCS811 as the air quality sensor */
+/** By default use CCS811 as the air quality sensor */
 #ifndef ALORA_SENSOR_USE_CCS811
     #define ALORA_SENSOR_USE_CCS811 1
 #endif
@@ -46,6 +46,41 @@ using namespace AllAboutEE;
 /** Define Alora enable pin number. It is GPIO 16 on ESPectro32 board */
 #ifndef ALORA_ENABLE_PIN
     #define ALORA_ENABLE_PIN 16
+#endif
+
+/** Enable MAX11609 by default. Set this definition value to 0 to disable MAX11069 */
+#ifndef ALORA_USE_MAX11609
+    #define ALORA_USE_MAX11609 1
+#endif
+
+/** Enable Air quality / gas sensor by default. Set this definition value to 0 to disable air quality / gas sensor. */
+#ifndef ALORA_USE_AIR_QUALITY_GAS_SENSOR
+    #define ALORA_USE_AIR_QUALITY_GAS_SENSOR 1
+#endif
+
+/** Enable IMU sensor by default. Set this definition value to 0 to disable IMU sensor */
+#ifndef ALORA_USE_IMU_SENSOR
+    #define ALORA_USE_IMU_SENSOR 1
+#endif
+
+/** Enable GPIO expander by default. Set this definition value to 0 to disable GPIO expander */
+#ifndef ALORA_USE_GPIO_EXPANDER
+    #define ALORA_USE_GPIO_EXPANDER 1
+#endif
+
+/** Enable HDC1080 by default. Set this definition value to 0 to disable HDC1080 */
+#ifndef ALORA_USE_HDC1080_SENSOR
+    #define ALORA_USE_HDC1080_SENSOR 1
+#endif
+
+/** Enable BME280 by default. Set this definition value to 0 to disable BME280 */
+#ifndef ALORA_USE_BME280_SENSOR
+    #define ALORA_USE_BME280_SENSOR 1
+#endif
+
+/** Enable TSL2591 by default. Set this definition value to 0 to disable TSL2591 */
+#ifndef ALORA_USE_TSL2591_SENSOR
+    #define ALORA_USE_TSL2591_SENSOR 1
 #endif
 
 /** HDC1080 I2C address */

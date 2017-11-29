@@ -61,6 +61,7 @@ void AloraSensorKit::begin() {
         gps = new NMEAGPS();
     }
 
+    #if ALORA_USE_BME280_SENSOR
     if (bme280 == NULL) {
         Serial.println("[DEBUG] Initializing BME280");
         bme280 = new Adafruit_BME280();
@@ -71,13 +72,17 @@ void AloraSensorKit::begin() {
             bme280 = NULL;
         }
     }
+    #endif
 
+    #if ALORA_USE_HDC1080_SENSOR
     if (hdc1080 == NULL) {
         Serial.println("[DEBUG] Initializing HDC1080");
         hdc1080 = new ClosedCube_HDC1080();
         hdc1080->begin(ALORA_HDC1080_ADDRESS);
     }
+    #endif
 
+    #if ALORA_USE_TSL2591_SENSOR
     if (tsl2591 == NULL) {
         Serial.println("[DEBUG] Initializing TSL2591");
         tsl2591 = new Adafruit_TSL2591(2591);
@@ -89,13 +94,17 @@ void AloraSensorKit::begin() {
             configureTSL2591Sensor();
         }
     }
+    #endif
 
+    #if ALORA_USE_MAX11069
     if (max11609 == NULL) {
         Serial.println("[DEBUG] Initializing MAX11609");
         max11609 = new MAX11609();
         max11609->begin(AllAboutEE::MAX11609::REF_VDD);
     }
+    #endif
 
+    #if ALORA_USE_GPIO_EXPANDER
     if (ioExpander == NULL) {
         Serial.println("[DEBUG] Initializing IO Expander");
         ioExpander = new GpioExpander();
@@ -124,28 +133,33 @@ void AloraSensorKit::begin() {
             ioExpander = NULL;
         }
     }
+    #endif
 
-#if ALORA_SENSOR_USE_CCS811 == 1
-    if (ccs811 == NULL) {
-        Serial.println("[DEBUG] Initializing CCS811");
-        ccs811 = new CCS811(ALORA_I2C_ADDRESS_CCS811);
 
-        CCS811Core::status returnCode = ccs811->begin();
-        if (returnCode != CCS811Core::SENSOR_SUCCESS) {
-            Serial.println("[ERROR] CCS811 .begin() returned with an error.");
-            Serial.printf("[ERROR] CCS811 Init return code %d\n",  returnCode);
+    #if ALORA_USE_AIR_QUALITY_GAS_SENSOR
+    #if ALORA_SENSOR_USE_CCS811 == 1
+        if (ccs811 == NULL) {
+            Serial.println("[DEBUG] Initializing CCS811");
+            ccs811 = new CCS811(ALORA_I2C_ADDRESS_CCS811);
 
-            delete ccs811;
-            ccs811 = NULL;
-        } else {
-            Serial.printf("[DEBUG] CCS811 Init return code %d\n",  returnCode);
+            CCS811Core::status returnCode = ccs811->begin();
+            if (returnCode != CCS811Core::SENSOR_SUCCESS) {
+                Serial.println("[ERROR] CCS811 .begin() returned with an error.");
+                Serial.printf("[ERROR] CCS811 Init return code %d\n",  returnCode);
+
+                delete ccs811;
+                ccs811 = NULL;
+            } else {
+                Serial.printf("[DEBUG] CCS811 Init return code %d\n",  returnCode);
+            }
         }
-    }
-#else
-    pinMode(ALORA_ADC_GAS_HEATER_PIN, OUTPUT);
-    digitalWrite(ALORA_ADC_GAS_HEATER_PIN, HIGH);
-#endif
+    #else
+        pinMode(ALORA_ADC_GAS_HEATER_PIN, OUTPUT);
+        digitalWrite(ALORA_ADC_GAS_HEATER_PIN, HIGH);
+    #endif
+    #endif
 
+    #if ALORA_USE_IMU_SENSOR
     if (imuSensor == NULL) {
         Serial.println("[DEBUG] Initializing IMU sensor");
         imuSensor = new ALORA_IMU_SENSOR();
@@ -156,6 +170,7 @@ void AloraSensorKit::begin() {
             imuSensor = NULL;
         }
     }
+    #endif
 
     if (rtc == NULL) {
         Serial.println("[DEBUG] Initializing RTC");
@@ -417,6 +432,10 @@ void AloraSensorKit::readTSL2591(double &lux) {
  * Configure the TSL2591 sensor
  */
 void AloraSensorKit::configureTSL2591Sensor() {
+    if (tsl2591 == NULL) {
+        return;
+    }
+
     // You can change the gain on the fly, to adapt to brighter/dimmer light situations
     //tsl.setGain(TSL2591_GAIN_LOW);    // 1x gain (bright light)
     tsl2591->setGain(TSL2591_GAIN_MED);      // 25x gain
@@ -482,6 +501,12 @@ void AloraSensorKit::readGas(uint16_t& gas, uint16_t& co2) {
     gas = airTvoc;
     co2 = co2val;
 #else
+    if (max11609 == NULL) {
+        gas = 0;
+        co2 = 0;
+
+        return;
+    }
     gas = max11609->read(ALORA_ADC_GAS_CHANNEL);
     co2 = 0;
 #endif
