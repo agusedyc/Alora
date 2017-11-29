@@ -1,4 +1,6 @@
-/*
+/** @file */
+
+/**
  * Originally written by Andri Yadi on 8/5/16
  * Maintained by Alwin Arrasyid
  */
@@ -15,7 +17,7 @@
 #include <Streamers.h>
 #include "Adafruit_TSL2591.h"
 #include <SparkFunCCS811.h>
-#include "SparkFunLSM9DS1.h"
+
 #include "GpioExpander.h"
 
 #include <RTClib.h>
@@ -24,29 +26,56 @@
 #include "AllAboutEE_MAX11609.h"
 using namespace AllAboutEE;
 
+#include "AloraIMULSM9DS1Adapter.h"
+
+/** Choose IMU sensor for Alora. Uses LSM9DS1 by default */
+#ifndef ALORA_IMU_SENSOR
+    #define ALORA_IMU_SENSOR AloraIMULSM9DS1Adapter
+#endif
+
+/** By default enable CCS811 as the air quality sensor */
 #ifndef ALORA_SENSOR_USE_CCS811
-#define ALORA_SENSOR_USE_CCS811 1
+    #define ALORA_SENSOR_USE_CCS811 1
 #endif
 
+/** Define sensor query interval. The default value is 300ms */
 #ifndef ALORA_SENSOR_QUERY_INTERVAL
-#define ALORA_SENSOR_QUERY_INTERVAL 300
+    #define ALORA_SENSOR_QUERY_INTERVAL 300
 #endif
 
+/** Define Alora enable pin number. It is GPIO 16 on ESPectro32 board */
 #ifndef ALORA_ENABLE_PIN
-#define ALORA_ENABLE_PIN 16
+    #define ALORA_ENABLE_PIN 16
 #endif
 
+/** HDC1080 I2C address */
 #define ALORA_HDC1080_ADDRESS 0x40
-#define ALORA_I2C_ADDRESS_CCS811 0x5A
-#define ALORA_I2C_ADDRESS_IMU_M 0x1E
-#define ALORA_I2C_ADDRESS_IMU_AG 0x6B
 
+/** CCS811 I2C address */
+#define ALORA_I2C_ADDRESS_CCS811 0x5A
+
+/** Magnetometer I2C address */
+#if ALORA_IMU_SENSOR == ALORA_IMU_SENSOR_LSM9DS1
+    #define ALORA_I2C_ADDRESS_IMU_M 0x1E
+#elif ALORA_IMU_SENSOR == ALORA_IMU_SENSOR_LSM303AGR
+    #define ALORA_I2C_ADDRESS_IMU_M 0x3C
+#endif
+
+/** Accelerometer and Gyroscope I2C address */
+#if ALORA_IMU_SENSOR == ALORA_IMU_SENSOR_LSM9DS1
+    #define ALORA_I2C_ADDRESS_IMU_AG 0x6B
+#elif ALORA_IMU_SENSOR == ALORA_IMU_SENSOR_LSM303AGR
+    #define ALORA_I2C_ADDRESS_IMU_AG 0x32
+#endif
+
+/** Magnetic sensor pin. It is GPIO 35 on ESPectro32 board */
 #define ALORA_MAGNETIC_SENSOR_PIN 35
 
+/** Heater pin for gas sensor. It is pin GPIO 13 on ESPectro32 board */
 #define ALORA_ADC_GAS_HEATER_PIN 13
-#define ALORA_ADC_GAS_CHANNEL 1
 
-#define ALORA_WINDSENSOR_PIN 34
+/** Channel number of MAX1109 for gas sensor */
+#define ALORA_ADC_GAS_CHANNEL 1
 
 /**
  * Data read from sensors are stored in this struct
@@ -101,17 +130,17 @@ public:
 private:
     NMEAGPS* gps = NULL;
     Stream* gpsStream = NULL;
-    Adafruit_BME280* bme280 = NULL;             /**< Object of Adafruit BME280 sensor */
-    ClosedCube_HDC1080* hdc1080 = NULL;         /**< Object of HDC1080 sensor */
-    Adafruit_TSL2591* tsl2591 = NULL;           /**< Object of Adafruit TSL2591 sensor */
-    CCS811* ccs811 = NULL;                      /**< Object of CCS811 sensor */
-    LSM9DS1* imuSensor = NULL;                  /**< Object of LSM9DS1 sensor */
-    GpioExpander* ioExpander = NULL;            /**< Object of GPIO Expander (SX1509) */
-    MAX11609* max11609 = NULL;                  /**< Object of MAX11609 */
-    RTC_DS3231* rtc = NULL;                     /**< Object of RTC sensor */
+    Adafruit_BME280* bme280 = NULL;                             /**< Object of Adafruit BME280 sensor */
+    ClosedCube_HDC1080* hdc1080 = NULL;                         /**< Object of HDC1080 sensor */
+    Adafruit_TSL2591* tsl2591 = NULL;                           /**< Object of Adafruit TSL2591 sensor */
+    CCS811* ccs811 = NULL;                                      /**< Object of CCS811 sensor */
+    ALORA_IMU_SENSOR* imuSensor = NULL;                         /**< IMU sensor adapter object */
+    GpioExpander* ioExpander = NULL;                            /**< Object of GPIO Expander (SX1509) */
+    MAX11609* max11609 = NULL;                                  /**< Object of MAX11609 */
+    RTC_DS3231* rtc = NULL;                                     /**< Object of RTC sensor */
 
-    SensorValues lastSensorData;                /**< Object of SensorValues struct. All sensor data are stored in this property */
-    uint32_t lastSensorQuerryMs = 0;            /**< Records the time when the sensor data is read in milliseconds */
+    SensorValues lastSensorData;                                /**< Object of SensorValues struct. All sensor data are stored in this property */
+    uint32_t lastSensorQuerryMs = 0;                            /**< Records the time when the sensor data is read in milliseconds */
 
     void doAllSensing();
     void readBME280(float& T, float& P, float& H);

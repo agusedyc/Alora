@@ -1,4 +1,6 @@
-/*
+/** @file */
+
+/**
  * Originally written by Andri Yadi on 8/5/16
  * Maintained by Alwin Arrasyid
  */
@@ -132,7 +134,7 @@ void AloraSensorKit::begin() {
         if (returnCode != CCS811Core::SENSOR_SUCCESS) {
             Serial.println("[ERROR] CCS811 .begin() returned with an error.");
             Serial.printf("[ERROR] CCS811 Init return code %d\n",  returnCode);
-    
+
             delete ccs811;
             ccs811 = NULL;
         } else {
@@ -146,12 +148,9 @@ void AloraSensorKit::begin() {
 
     if (imuSensor == NULL) {
         Serial.println("[DEBUG] Initializing IMU sensor");
-        imuSensor = new LSM9DS1();
-        imuSensor->settings.device.commInterface =IMU_MODE_I2C;
-        imuSensor->settings.device.mAddress = ALORA_I2C_ADDRESS_IMU_M;
-        imuSensor->settings.device.agAddress = ALORA_I2C_ADDRESS_IMU_AG;
+        imuSensor = new ALORA_IMU_SENSOR();
 
-        if (!imuSensor->begin()) {
+        if (!imuSensor->begin(ALORA_I2C_ADDRESS_IMU_AG, ALORA_I2C_ADDRESS_IMU_M)) {
             Serial.println("[ERROR] Failed initializing IMU sensor");
             delete imuSensor;
             imuSensor = NULL;
@@ -185,7 +184,7 @@ void AloraSensorKit::run() {
  */
 void AloraSensorKit::printSensingTo(Print& print) {
     print.println("Sensing:");
-    
+
     String senseStr;
     printSensingTo(senseStr);
     print.println(senseStr);
@@ -313,11 +312,10 @@ void AloraSensorKit::readAccelerometer(float &ax, float &ay, float &az) {
 
         return;
     }
-    imuSensor->readAccel();
 
-    ax = imuSensor->calcAccel(imuSensor->ax);
-    ay = imuSensor->calcAccel(imuSensor->ay);
-    az = imuSensor->calcAccel(imuSensor->az);
+    ax = imuSensor->readAccelX();
+    ay = imuSensor->readAccelY();
+    az = imuSensor->readAccelZ();
 }
 
 /**
@@ -335,11 +333,9 @@ void AloraSensorKit::readGyro(float &gx, float &gy, float &gz) {
         return;
     }
 
-    imuSensor->readGyro();
-
-    gx = imuSensor->calcGyro(imuSensor->gx);
-    gy = imuSensor->calcGyro(imuSensor->gy);
-    gz = imuSensor->calcGyro(imuSensor->gz);
+    gx = imuSensor->readGyroX();
+    gy = imuSensor->readGyroY();
+    gz = imuSensor->readGyroZ();
 }
 
 
@@ -360,31 +356,10 @@ void AloraSensorKit::readMagnetometer(float &mx, float &my, float &mz, float &mH
         return;
     }
 
-    imuSensor->readMag();
-
-    mx = imuSensor->calcMag(imuSensor->mx);
-    my = imuSensor->calcMag(imuSensor->my);
-    mz = imuSensor->calcMag(imuSensor->mz);
-
-    float heading;
-
-    if (imuSensor->my > 0)
-    {
-        heading = 90 - (atan(mx / my) * (180 / PI));
-    }
-    else if (imuSensor->my < 0)
-    {
-        heading = -(atan(mx / my) * (180 / PI));
-    }
-    else // hy = 0
-    {
-        if (mx < 0)
-            heading = 180;
-        else
-            heading = 0;
-    }
-
-    mH = heading;
+    mx = imuSensor->readMagX();
+    my = imuSensor->readMagY();
+    mz = imuSensor->readMagZ();
+    mH = imuSensor->readMagHeading();
 }
 
 /**
@@ -456,7 +431,7 @@ void AloraSensorKit::configureTSL2591Sensor() {
     // tsl.setTiming(TSL2591_INTEGRATIONTIME_500MS);
     // tsl.setTiming(TSL2591_INTEGRATIONTIME_600MS);  // longest integration time (dim light)
 
-    /* Display the gain and integration time for reference sake */  
+    /* Display the gain and integration time for reference sake */
     Serial.println(F("------------------------------------"));
     Serial.print  (F("Gain:         "));
     tsl2591Gain_t gain = tsl2591->getGain();
@@ -476,7 +451,7 @@ void AloraSensorKit::configureTSL2591Sensor() {
             break;
     }
     Serial.print  (F("Timing:       "));
-    Serial.print((tsl2591->getTiming() + 1) * 100, DEC); 
+    Serial.print((tsl2591->getTiming() + 1) * 100, DEC);
     Serial.println(F(" ms"));
     Serial.println(F("------------------------------------"));
     Serial.println(F(""));
@@ -496,7 +471,7 @@ void AloraSensorKit::readGas(uint16_t& gas, uint16_t& co2) {
         return;
     }
 
-    if (!ccs811->dataAvailable()) { 
+    if (!ccs811->dataAvailable()) {
         return;
     }
 
