@@ -620,6 +620,10 @@ uint16_t AloraSensorKit::readADC(uint8_t channel) {
  */
 void AloraSensorKit::initGPS(Stream* gpsStream) {
     this->gpsStream = gpsStream;
+    if (ioExpander != NULL) {
+        ioExpander->pinMode(ALORA_GPS_ENABLE_PIN, OUTPUT);
+        ioExpander->pinMode(ALORA_GPS_ENABLE_PIN, HIGH);
+    }
 }
 
 /**
