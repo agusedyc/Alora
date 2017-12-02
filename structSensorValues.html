@@ -74,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -137,10 +137,12 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ae8e04c61f4e7c380f893c09a8497307b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a573c559ca1f1359f68b4b46c944b6b4c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSensorValues.html#a573c559ca1f1359f68b4b46c944b6b4c">windSpeed</a></td></tr>
 <tr class="separator:a573c559ca1f1359f68b4b46c944b6b4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84e691bf347dc1d1f9cb50a7c2434878"><td class="memItemLeft" align="right" valign="top">gps_fix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSensorValues.html#a84e691bf347dc1d1f9cb50a7c2434878">gpsFix</a></td></tr>
+<tr class="separator:a84e691bf347dc1d1f9cb50a7c2434878"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Data read from sensors are stored in this struct </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2AloraReadAllSensor_2AloraReadAllSensor_8ino-example.html#_a3">examples/AloraReadAllSensor/AloraReadAllSensor.ino</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2AloraReadAllSensor_2AloraReadAllSensor_8ino-example.html#_a3">examples/AloraReadAllSensor/AloraReadAllSensor.ino</a>, and <a class="el" href="examples_2AloraReadGPS_2AloraReadGPS_8ino-example.html#_a4">examples/AloraReadGPS/AloraReadGPS.ino</a>.</dd>
 </dl></div><h2 class="groupheader">Member Data Documentation</h2>
 <a class="anchor" id="abafc943b415ed683470e87a5e7705450"></a>
 <div class="memitem">
@@ -205,6 +207,20 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Air quality value from either CCS811 or analog gas sensor </p>
 
+</div>
+</div>
+<a class="anchor" id="a84e691bf347dc1d1f9cb50a7c2434878"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">gps_fix SensorValues::gpsFix</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>GPS fix information </p>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2AloraReadGPS_2AloraReadGPS_8ino-example.html#a7">examples/AloraReadGPS/AloraReadGPS.ino</a>.</dd>
+</dl>
 </div>
 </div>
 <a class="anchor" id="aaee0232bcc7d9ff1945b1a9ceda6ee09"></a>
@@ -410,7 +426,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Aug 26 2017 16:42:18 for Alora Library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Dec 2 2017 12:03:42 for Alora Library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

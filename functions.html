@@ -100,7 +100,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -122,12 +122,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>accelZ
 : <a class="el" href="structSensorValues.html#a048b6e103db0c350ea373d1f7a73ff29">SensorValues</a>
 </li>
+<li>AloraSensorKit()
+: <a class="el" href="classAloraSensorKit.html#a441c8d986d3712739b7c9c96f9dea64b">AloraSensorKit</a>
+</li>
 </ul>
 
 
 <h3><a class="anchor" id="index_b"></a>- b -</h3><ul>
 <li>begin()
 : <a class="el" href="classAllAboutEE_1_1MAX11609.html#aa3d78517095acbe5cb9cc518e3997bad">AllAboutEE::MAX11609</a>
+, <a class="el" href="classAloraIMULSM9DS1Adapter.html#ae578c64452b8390ca9389fcae7f8e80e">AloraIMULSM9DS1Adapter</a>
+, <a class="el" href="classAloraIMUSensorBase.html#a6d063ae0b60bf1bdab7bb01ab08fd6e4">AloraIMUSensorBase</a>
 , <a class="el" href="classAloraSensorKit.html#a459b744a0d67cd49c8f0d99e6473ced5">AloraSensorKit</a>
 , <a class="el" href="classLSM9DS1.html#a8728e560c76bd120b3711af15a6ecbd6">LSM9DS1</a>
 </li>
@@ -170,11 +175,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>getEvent()
 : <a class="el" href="classAdafruit__TSL2591.html#ace6874a951bd898e818a7066fbd78fd1">Adafruit_TSL2591</a>
 </li>
+<li>getGPSObject()
+: <a class="el" href="classAloraSensorKit.html#ae5316bec073fd661e85ac058027096e4">AloraSensorKit</a>
+</li>
 <li>getLastSensorData()
 : <a class="el" href="classAloraSensorKit.html#aeba641828b78bee31ac57c2987070928">AloraSensorKit</a>
 </li>
 <li>getSensor()
 : <a class="el" href="classAdafruit__TSL2591.html#aec46ddf7eca27c6e2563e5517eb273bf">Adafruit_TSL2591</a>
+</li>
+<li>gpsFix
+: <a class="el" href="structSensorValues.html#a84e691bf347dc1d1f9cb50a7c2434878">SensorValues</a>
 </li>
 <li>gyroX
 : <a class="el" href="structSensorValues.html#aaee0232bcc7d9ff1945b1a9ceda6ee09">SensorValues</a>
@@ -203,7 +214,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <h3><a class="anchor" id="index_i"></a>- i -</h3><ul>
 <li>imuSensor
-: <a class="el" href="classAloraSensorKit.html#a51f47026865f2f62eb8c1474bb928bdd">AloraSensorKit</a>
+: <a class="el" href="classAloraIMULSM9DS1Adapter.html#abe78a6864bc93c144cbf7d0ee6bf0a84">AloraIMULSM9DS1Adapter</a>
+, <a class="el" href="classAloraSensorKit.html#a44e45565182d6e940c46bf458898a7ad">AloraSensorKit</a>
+</li>
+<li>initGPS()
+: <a class="el" href="classAloraSensorKit.html#af18a6fe7b84b4ac433c4feb606dae2ab">AloraSensorKit</a>
 </li>
 <li>ioExpander
 : <a class="el" href="classAloraSensorKit.html#ac39ee7a439424a9c1afe283da61fe702">AloraSensorKit</a>
@@ -263,6 +278,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>readAccelerometer()
 : <a class="el" href="classAloraSensorKit.html#a2e8ed3be0bee6b624d9646ca8afa4d58">AloraSensorKit</a>
 </li>
+<li>readAccelX()
+: <a class="el" href="classAloraIMULSM9DS1Adapter.html#a1f8045571efdb96fe16feec8b117bfe9">AloraIMULSM9DS1Adapter</a>
+, <a class="el" href="classAloraIMUSensorBase.html#ab97200d3714cb01baaf5d47c1c3f81ab">AloraIMUSensorBase</a>
+</li>
+<li>readAccelY()
+: <a class="el" href="classAloraIMULSM9DS1Adapter.html#aa4872aa52c6184ea0e9c1f6b64147e81">AloraIMULSM9DS1Adapter</a>
+, <a class="el" href="classAloraIMUSensorBase.html#a6531889af38e0db63db759383a0ef9db">AloraIMUSensorBase</a>
+</li>
+<li>readAccelZ()
+: <a class="el" href="classAloraIMULSM9DS1Adapter.html#a57f7873455da3d07548b77b1b74f51fb">AloraIMULSM9DS1Adapter</a>
+, <a class="el" href="classAloraIMUSensorBase.html#adbdf2057fdf3055c0a8d27c28986cf3e">AloraIMUSensorBase</a>
+</li>
 <li>readADC()
 : <a class="el" href="classAloraSensorKit.html#a7730c2034fd874d374b04fa47bfc2033">AloraSensorKit</a>
 </li>
@@ -272,17 +299,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>readGas()
 : <a class="el" href="classAloraSensorKit.html#ac95d622e58a1f6990f96a5b37f5557e3">AloraSensorKit</a>
 </li>
+<li>readGPS()
+: <a class="el" href="classAloraSensorKit.html#a848e220c160325d3ab707b5f89d6791e">AloraSensorKit</a>
+</li>
 <li>readGyro()
 : <a class="el" href="classAloraSensorKit.html#a8f26500fc0c7172598068576d3b96963">AloraSensorKit</a>
 </li>
+<li>readGyroX()
+: <a class="el" href="classAloraIMULSM9DS1Adapter.html#a0f81587b4c1beddac464d548f305cbd9">AloraIMULSM9DS1Adapter</a>
+, <a class="el" href="classAloraIMUSensorBase.html#a604fbadc590dd32af9f16e36c1f0bc98">AloraIMUSensorBase</a>
+</li>
+<li>readGyroY()
+: <a class="el" href="classAloraIMULSM9DS1Adapter.html#adce05af74f0201c553773d4c6d2a0c7f">AloraIMULSM9DS1Adapter</a>
+, <a class="el" href="classAloraIMUSensorBase.html#ac8016b2eaf40388562375a8ac087072c">AloraIMUSensorBase</a>
+</li>
+<li>readGyroZ()
+: <a class="el" href="classAloraIMULSM9DS1Adapter.html#ad8273916c1d0bfb6ac9fe9e0217be7ca">AloraIMULSM9DS1Adapter</a>
+, <a class="el" href="classAloraIMUSensorBase.html#a95235e7ba0820980d30f582a7df15601">AloraIMUSensorBase</a>
+</li>
 <li>readHDC1080()
 : <a class="el" href="classAloraSensorKit.html#a9eb4fe3472c8793d649d319e93b3d1c4">AloraSensorKit</a>
+</li>
+<li>readMagHeading()
+: <a class="el" href="classAloraIMULSM9DS1Adapter.html#aed85c1162e1f312528e5627b5e48d1fa">AloraIMULSM9DS1Adapter</a>
+, <a class="el" href="classAloraIMUSensorBase.html#aa70b1e96cf5f5f786c2f4dfc2604c577">AloraIMUSensorBase</a>
 </li>
 <li>readMagneticSensor()
 : <a class="el" href="classAloraSensorKit.html#a5c717a79ce357263e9ebe9e2db8140da">AloraSensorKit</a>
 </li>
 <li>readMagnetometer()
 : <a class="el" href="classAloraSensorKit.html#a941c8b80c292574f18eb0ba8ec9e4575">AloraSensorKit</a>
+</li>
+<li>readMagX()
+: <a class="el" href="classAloraIMULSM9DS1Adapter.html#a125981d9ae94b5e878188c7048d27738">AloraIMULSM9DS1Adapter</a>
+, <a class="el" href="classAloraIMUSensorBase.html#ad3b3eb57ca76e1382b02440a725826f7">AloraIMUSensorBase</a>
+</li>
+<li>readMagY()
+: <a class="el" href="classAloraIMULSM9DS1Adapter.html#a3f82d672af9b6a69296adc9305297174">AloraIMULSM9DS1Adapter</a>
+, <a class="el" href="classAloraIMUSensorBase.html#a54389127913dbd2e56aef048c42ac7bc">AloraIMUSensorBase</a>
+</li>
+<li>readMagZ()
+: <a class="el" href="classAloraIMULSM9DS1Adapter.html#a7b8018d8298be9d8c286d962b8ff7def">AloraIMULSM9DS1Adapter</a>
+, <a class="el" href="classAloraIMUSensorBase.html#a701af6801e75ceb8921bd19994cc5c73">AloraIMUSensorBase</a>
 </li>
 <li>readTSL2591()
 : <a class="el" href="classAloraSensorKit.html#a04dba3e2cec80b37cf30c9a5aee591e3">AloraSensorKit</a>
@@ -333,7 +391,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Aug 26 2017 16:42:18 for Alora Library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Dec 2 2017 12:03:42 for Alora Library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['alora_5fadc_5fgas_5fchannel',['ALORA_ADC_GAS_CHANNEL',['../AloraSensorKit_8h.html#a7d71ffa85b701e33165d3a6b5cf7fe48',1,'AloraSensorKit.h']]],
+  ['alora_5fadc_5fgas_5fheater_5fpin',['ALORA_ADC_GAS_HEATER_PIN',['../AloraSensorKit_8h.html#a5474d4c65567f2ac0c421e2dc1f654f4',1,'AloraSensorKit.h']]],
+  ['alora_5fenable_5fpin',['ALORA_ENABLE_PIN',['../AloraSensorKit_8h.html#aa5eddd31c55b3cb7533e41dd9cbe1f6a',1,'AloraSensorKit.h']]],
+  ['alora_5fgps_5fenable_5fpin',['ALORA_GPS_ENABLE_PIN',['../AloraSensorKit_8h.html#a13957b72f558a1ee9365e09f959876fc',1,'AloraSensorKit.h']]],
+  ['alora_5fhdc1080_5faddress',['ALORA_HDC1080_ADDRESS',['../AloraSensorKit_8h.html#ad72bd30e658a641cd5492e5456b821dc',1,'AloraSensorKit.h']]],
+  ['alora_5fi2c_5faddress_5fccs811',['ALORA_I2C_ADDRESS_CCS811',['../AloraSensorKit_8h.html#afd3ed968d70d8b4a3eb613cb0429302d',1,'AloraSensorKit.h']]],
+  ['alora_5fi2c_5faddress_5fimu_5fag',['ALORA_I2C_ADDRESS_IMU_AG',['../AloraSensorKit_8h.html#aa3da9fb85887d9b3806b6fe931a529ed',1,'AloraSensorKit.h']]],
+  ['alora_5fi2c_5faddress_5fimu_5fm',['ALORA_I2C_ADDRESS_IMU_M',['../AloraSensorKit_8h.html#a3a2ca6a3f9ae59408067ede1b4762fde',1,'AloraSensorKit.h']]],
+  ['alora_5fimu_5fsensor',['ALORA_IMU_SENSOR',['../AloraSensorKit_8h.html#ac148f18876f6baf0adcba27ad40cd026',1,'AloraSensorKit.h']]],
+  ['alora_5fmagnetic_5fsensor_5fpin',['ALORA_MAGNETIC_SENSOR_PIN',['../AloraSensorKit_8h.html#a6210478310314fe07059be0c3f7fb3fb',1,'AloraSensorKit.h']]],
+  ['alora_5fsensor_5fquery_5finterval',['ALORA_SENSOR_QUERY_INTERVAL',['../AloraSensorKit_8h.html#ab95fa509ed561a59f666ce22e0a8990a',1,'AloraSensorKit.h']]],
+  ['alora_5fsensor_5fuse_5fccs811',['ALORA_SENSOR_USE_CCS811',['../AloraSensorKit_8h.html#aa656498f45350e570d56c020e136926b',1,'AloraSensorKit.h']]],
+  ['alora_5fuse_5fair_5fquality_5fgas_5fsensor',['ALORA_USE_AIR_QUALITY_GAS_SENSOR',['../AloraSensorKit_8h.html#a2059a399715886dc85894bda677e1cc4',1,'AloraSensorKit.h']]],
+  ['alora_5fuse_5fbme280_5fsensor',['ALORA_USE_BME280_SENSOR',['../AloraSensorKit_8h.html#a47388be9186977bdbd8ba55e28776ac5',1,'AloraSensorKit.h']]],
+  ['alora_5fuse_5fgpio_5fexpander',['ALORA_USE_GPIO_EXPANDER',['../AloraSensorKit_8h.html#a4eb5ecba5b5074630c609dcd99c79fda',1,'AloraSensorKit.h']]],
+  ['alora_5fuse_5fhdc1080_5fsensor',['ALORA_USE_HDC1080_SENSOR',['../AloraSensorKit_8h.html#ac96cdf3afa0584992b3995dc3d313a48',1,'AloraSensorKit.h']]],
+  ['alora_5fuse_5fimu_5fsensor',['ALORA_USE_IMU_SENSOR',['../AloraSensorKit_8h.html#a57a85db31f7e5eb0d4eaffef303b3b15',1,'AloraSensorKit.h']]],
+  ['alora_5fuse_5fmax11609',['ALORA_USE_MAX11609',['../AloraSensorKit_8h.html#ad5174e06d691e7567b190c97b1bc4795',1,'AloraSensorKit.h']]],
+  ['alora_5fuse_5ftsl2591_5fsensor',['ALORA_USE_TSL2591_SENSOR',['../AloraSensorKit_8h.html#a49663624fc011913d58be39b953fcd5b',1,'AloraSensorKit.h']]]
+];

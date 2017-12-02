@@ -11,9 +11,10 @@ var indexSectionsWithContent =
   1: "adgilmst",
   2: "a",
   3: "a",
-  4: "bcdgprs",
+  4: "abcdgiprs",
   5: "abcghilmprtw",
-  6: "l"
+  6: "a",
+  7: "l"
 };
 
 var indexSectionNames =
@@ -24,7 +25,8 @@ var indexSectionNames =
   3: "files",
   4: "functions",
   5: "variables",
-  6: "pages"
+  6: "defines",
+  7: "pages"
 };
 
 function convertToId(search)

@@ -1,4 +1,8 @@
 var searchData=
 [
-  ['printsensingto',['printSensingTo',['../classAloraSensorKit.html#a1934e2bc10a98c747654ece825328226',1,'AloraSensorKit::printSensingTo(Print &amp;print)'],['../classAloraSensorKit.html#ae676e87e90002afb80c585697f92fc45',1,'AloraSensorKit::printSensingTo(String &amp;str)']]]
+  ['getdatetime',['getDateTime',['../classAloraSensorKit.html#a6486b1a33af126455c044730c2ea9a98',1,'AloraSensorKit']]],
+  ['getevent',['getEvent',['../classAdafruit__TSL2591.html#ace6874a951bd898e818a7066fbd78fd1',1,'Adafruit_TSL2591']]],
+  ['getgpsobject',['getGPSObject',['../classAloraSensorKit.html#ae5316bec073fd661e85ac058027096e4',1,'AloraSensorKit']]],
+  ['getlastsensordata',['getLastSensorData',['../classAloraSensorKit.html#aeba641828b78bee31ac57c2987070928',1,'AloraSensorKit']]],
+  ['getsensor',['getSensor',['../classAdafruit__TSL2591.html#aec46ddf7eca27c6e2563e5517eb273bf',1,'Adafruit_TSL2591']]]
 ];

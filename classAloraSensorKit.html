@@ -74,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -97,6 +97,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a441c8d986d3712739b7c9c96f9dea64b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAloraSensorKit.html#a441c8d986d3712739b7c9c96f9dea64b">AloraSensorKit</a> ()</td></tr>
+<tr class="separator:a441c8d986d3712739b7c9c96f9dea64b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a459b744a0d67cd49c8f0d99e6473ced5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAloraSensorKit.html#a459b744a0d67cd49c8f0d99e6473ced5">begin</a> ()</td></tr>
 <tr class="separator:a459b744a0d67cd49c8f0d99e6473ced5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a261e598e30465e20912b5e6d49c247fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAloraSensorKit.html#a261e598e30465e20912b5e6d49c247fb">run</a> ()</td></tr>
@@ -113,6 +115,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a6486b1a33af126455c044730c2ea9a98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeba641828b78bee31ac57c2987070928"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structSensorValues.html">SensorValues</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAloraSensorKit.html#aeba641828b78bee31ac57c2987070928">getLastSensorData</a> ()</td></tr>
 <tr class="separator:aeba641828b78bee31ac57c2987070928"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af18a6fe7b84b4ac433c4feb606dae2ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAloraSensorKit.html#af18a6fe7b84b4ac433c4feb606dae2ab">initGPS</a> (Stream *gpsStream)</td></tr>
+<tr class="separator:af18a6fe7b84b4ac433c4feb606dae2ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5316bec073fd661e85ac058027096e4"><td class="memItemLeft" align="right" valign="top">NMEAGPS *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAloraSensorKit.html#ae5316bec073fd661e85ac058027096e4">getGPSObject</a> ()</td></tr>
+<tr class="separator:ae5316bec073fd661e85ac058027096e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -138,9 +144,17 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:a5c717a79ce357263e9ebe9e2db8140da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afec2dd1046ed609926b9f98b678a8462"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAloraSensorKit.html#afec2dd1046ed609926b9f98b678a8462">readWindSpeed</a> (float &amp;windspeed)</td></tr>
 <tr class="separator:afec2dd1046ed609926b9f98b678a8462"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a848e220c160325d3ab707b5f89d6791e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAloraSensorKit.html#a848e220c160325d3ab707b5f89d6791e">readGPS</a> (gps_fix &amp;fix)</td></tr>
+<tr class="separator:a848e220c160325d3ab707b5f89d6791e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:a3f589dab80779558d05ec08b2292e203"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3f589dab80779558d05ec08b2292e203"></a>
+NMEAGPS *&#160;</td><td class="memItemRight" valign="bottom"><b>gps</b> = NULL</td></tr>
+<tr class="separator:a3f589dab80779558d05ec08b2292e203"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bbc6780cb3db814f3c03366b2a631a0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6bbc6780cb3db814f3c03366b2a631a0"></a>
+Stream *&#160;</td><td class="memItemRight" valign="bottom"><b>gpsStream</b> = NULL</td></tr>
+<tr class="separator:a6bbc6780cb3db814f3c03366b2a631a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab57a13f6ea08bccd5654cc468dad628d"><td class="memItemLeft" align="right" valign="top">Adafruit_BME280 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAloraSensorKit.html#ab57a13f6ea08bccd5654cc468dad628d">bme280</a> = NULL</td></tr>
 <tr class="separator:ab57a13f6ea08bccd5654cc468dad628d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b6fdcf01312e8b7349bc2cb3d2795c7"><td class="memItemLeft" align="right" valign="top">ClosedCube_HDC1080 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAloraSensorKit.html#a5b6fdcf01312e8b7349bc2cb3d2795c7">hdc1080</a> = NULL</td></tr>
@@ -149,8 +163,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:aa5d359099b87f2b7099ea294721d3e28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ffb2758a86dbe3deeb962a614573ff6"><td class="memItemLeft" align="right" valign="top">CCS811 *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAloraSensorKit.html#a7ffb2758a86dbe3deeb962a614573ff6">ccs811</a> = NULL</td></tr>
 <tr class="separator:a7ffb2758a86dbe3deeb962a614573ff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51f47026865f2f62eb8c1474bb928bdd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLSM9DS1.html">LSM9DS1</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAloraSensorKit.html#a51f47026865f2f62eb8c1474bb928bdd">imuSensor</a> = NULL</td></tr>
-<tr class="separator:a51f47026865f2f62eb8c1474bb928bdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44e45565182d6e940c46bf458898a7ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="AloraSensorKit_8h.html#ac148f18876f6baf0adcba27ad40cd026">ALORA_IMU_SENSOR</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAloraSensorKit.html#a44e45565182d6e940c46bf458898a7ad">imuSensor</a> = NULL</td></tr>
+<tr class="separator:a44e45565182d6e940c46bf458898a7ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac39ee7a439424a9c1afe283da61fe702"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classGpioExpander.html">GpioExpander</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAloraSensorKit.html#ac39ee7a439424a9c1afe283da61fe702">ioExpander</a> = NULL</td></tr>
 <tr class="separator:ac39ee7a439424a9c1afe283da61fe702"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84ecec727306e4c6deb9a14a8853da33"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAllAboutEE_1_1MAX11609.html">MAX11609</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAloraSensorKit.html#a84ecec727306e4c6deb9a14a8853da33">max11609</a> = NULL</td></tr>
@@ -163,8 +177,25 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a89c817196eb98116dc3f871d86c06929"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2AloraReadAllSensor_2AloraReadAllSensor_8ino-example.html#_a0">examples/AloraReadAllSensor/AloraReadAllSensor.ino</a>.</dd>
-</dl></div><h2 class="groupheader">Member Function Documentation</h2>
+<div class="textblock"><dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2AloraReadAllSensor_2AloraReadAllSensor_8ino-example.html#_a0">examples/AloraReadAllSensor/AloraReadAllSensor.ino</a>, and <a class="el" href="examples_2AloraReadGPS_2AloraReadGPS_8ino-example.html#_a0">examples/AloraReadGPS/AloraReadGPS.ino</a>.</dd>
+</dl></div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a441c8d986d3712739b7c9c96f9dea64b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AloraSensorKit::AloraSensorKit </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Originally written by Andri Yadi on 8/5/16 Maintained by Alwin Arrasyid </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a459b744a0d67cd49c8f0d99e6473ced5"></a>
 <div class="memitem">
 <div class="memproto">
@@ -179,7 +210,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Initialize Alora board and its sensors. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2AloraReadAllSensor_2AloraReadAllSensor_8ino-example.html#a1">examples/AloraReadAllSensor/AloraReadAllSensor.ino</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2AloraReadAllSensor_2AloraReadAllSensor_8ino-example.html#a1">examples/AloraReadAllSensor/AloraReadAllSensor.ino</a>, and <a class="el" href="examples_2AloraReadGPS_2AloraReadGPS_8ino-example.html#a1">examples/AloraReadGPS/AloraReadGPS.ino</a>.</dd>
 </dl>
 </div>
 </div>
@@ -249,6 +280,24 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ae5316bec073fd661e85ac058027096e4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">NMEAGPS * AloraSensorKit::getGPSObject </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get NMEAGPS object </p>
+<dl class="section return"><dt>Returns</dt><dd>NMEAGPS object of the GPS </dd></dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2AloraReadGPS_2AloraReadGPS_8ino-example.html#a6">examples/AloraReadGPS/AloraReadGPS.ino</a>.</dd>
+</dl>
+</div>
+</div>
 <a class="anchor" id="aeba641828b78bee31ac57c2987070928"></a>
 <div class="memitem">
 <div class="memproto">
@@ -264,7 +313,25 @@ Private Attributes</h2></td></tr>
 <p>Get latest sensor data from Alora board. </p>
 <dl class="section return"><dt>Returns</dt><dd>object of <a class="el" href="structSensorValues.html">SensorValues</a> struct </dd></dl>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="structSensorValues.html">SensorValues</a> </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2AloraReadAllSensor_2AloraReadAllSensor_8ino-example.html#a4">examples/AloraReadAllSensor/AloraReadAllSensor.ino</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2AloraReadAllSensor_2AloraReadAllSensor_8ino-example.html#a4">examples/AloraReadAllSensor/AloraReadAllSensor.ino</a>, and <a class="el" href="examples_2AloraReadGPS_2AloraReadGPS_8ino-example.html#a5">examples/AloraReadGPS/AloraReadGPS.ino</a>.</dd>
+</dl>
+</div>
+</div>
+<a class="anchor" id="af18a6fe7b84b4ac433c4feb606dae2ab"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AloraSensorKit::initGPS </td>
+          <td>(</td>
+          <td class="paramtype">Stream *&#160;</td>
+          <td class="paramname"><em>gpsStream</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Initialize GPS </p>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2AloraReadGPS_2AloraReadGPS_8ino-example.html#a2">examples/AloraReadGPS/AloraReadGPS.ino</a>.</dd>
 </dl>
 </div>
 </div>
@@ -469,6 +536,31 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="a848e220c160325d3ab707b5f89d6791e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AloraSensorKit::readGPS </td>
+          <td>(</td>
+          <td class="paramtype">gps_fix &amp;&#160;</td>
+          <td class="paramname"><em>fix</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Read GPS location data </p>
 
 </div>
 </div>
@@ -725,7 +817,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Read all sensors value and store the result to a private member. This function is usually called inside loop() function. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2AloraReadAllSensor_2AloraReadAllSensor_8ino-example.html#a2">examples/AloraReadAllSensor/AloraReadAllSensor.ino</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2AloraReadAllSensor_2AloraReadAllSensor_8ino-example.html#a2">examples/AloraReadAllSensor/AloraReadAllSensor.ino</a>, and <a class="el" href="examples_2AloraReadGPS_2AloraReadGPS_8ino-example.html#a3">examples/AloraReadGPS/AloraReadGPS.ino</a>.</dd>
 </dl>
 </div>
 </div>
@@ -816,7 +908,7 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a51f47026865f2f62eb8c1474bb928bdd"></a>
+<a class="anchor" id="a44e45565182d6e940c46bf458898a7ad"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -824,7 +916,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLSM9DS1.html">LSM9DS1</a>* AloraSensorKit::imuSensor = NULL</td>
+          <td class="memname"><a class="el" href="AloraSensorKit_8h.html#ac148f18876f6baf0adcba27ad40cd026">ALORA_IMU_SENSOR</a>* AloraSensorKit::imuSensor = NULL</td>
         </tr>
       </table>
   </td>
@@ -833,7 +925,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Object of <a class="el" href="classLSM9DS1.html">LSM9DS1</a> sensor </p>
+<p>IMU sensor adapter object </p>
 
 </div>
 </div>
@@ -965,12 +1057,12 @@ Private Attributes</h2></td></tr>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="AloraSensorKit_8h_source.html">AloraSensorKit.h</a></li>
-<li>src/AloraSensorKit.cpp</li>
+<li>src/<a class="el" href="AloraSensorKit_8cpp.html">AloraSensorKit.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Aug 26 2017 16:42:18 for Alora Library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Dec 2 2017 12:03:42 for Alora Library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
