@@ -26,6 +26,8 @@ public:
     virtual float readMagZ();
     virtual float readMagHeading();
 
+    LSM9DS1* getIMUSensor();
+
 private:
     LSM9DS1* imuSensor;                     /**< LSM9DS1 object pointer */
 };

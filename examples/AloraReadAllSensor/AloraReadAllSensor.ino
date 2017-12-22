@@ -2,7 +2,14 @@
 #include <Wire.h>
 #include <AloraSensorKit.h>
 
-AloraSensorKit sensorKit;
+
+// Use 13 for Alora board v2.2
+#define ENABLE_PIN 16
+
+// Use LOW for Alora board v2.2
+#define ENABLE_PIN_ACTIVE_LOGIC HIGH
+
+AloraSensorKit sensorKit(ENABLE_PIN, ENABLE_PIN_ACTIVE_LOGIC);
 
 void setup() {
     // NOTE: in case the process hang right after initializing alora library, uncomment this line below:

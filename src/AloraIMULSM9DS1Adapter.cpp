@@ -90,3 +90,12 @@ float AloraIMULSM9DS1Adapter::readMagHeading() {
 
     return heading;
 }
+
+/**
+ * @brief Get pointer to LSM9DS1 object
+ *
+ * @return LSM9DS1* pointer to LSM9DS1 object
+ */
+LSM9DS1* AloraIMULSM9DS1Adapter::getIMUSensor() {
+    return this->imuSensor;
+}

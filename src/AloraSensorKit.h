@@ -30,7 +30,6 @@ using namespace AllAboutEE;
 
 /** Choose IMU sensor for Alora. Uses LSM9DS1 by default */
 #if !defined(ALORA_IMU_SENSOR)
-    #warning "Using LSM9DS1 as default IMU sensor"
     #define ALORA_IMU_SENSOR AloraIMULSM9DS1Adapter
 #endif
 
@@ -41,54 +40,41 @@ using namespace AllAboutEE;
 
 /** Define sensor query interval. The default value is 300ms */
 #if !defined(ALORA_SENSOR_QUERY_INTERVAL)
-    #warning "Default sensor query interval: 300ms"
     #define ALORA_SENSOR_QUERY_INTERVAL 300
-#endif
-
-/** Define Alora enable pin number. It is GPIO 16 on ESPectro32 board */
-#if !defined(ALORA_ENABLE_PIN)
-    #define ALORA_ENABLE_PIN 16
 #endif
 
 /** Enable MAX11609 by default. Set this definition value to 0 to disable MAX11069 */
 #if !defined(ALORA_USE_MAX11609)
-    #warning "Enabling MAX11609 by default"
     #define ALORA_USE_MAX11609 1
 #endif
 
 /** Enable Air quality / gas sensor by default. Set this definition value to 0 to disable air quality / gas sensor. */
 #if !defined(ALORA_USE_AIR_QUALITY_GAS_SENSOR)
-    #warning "Enabling Air Quality / Gas sensor by default"
     #define ALORA_USE_AIR_QUALITY_GAS_SENSOR 1
 #endif
 
 /** Enable IMU sensor by default. Set this definition value to 0 to disable IMU sensor */
 #if !defined(ALORA_USE_IMU_SENSOR)
-    #warning "Enabling IMU sensor by default"
     #define ALORA_USE_IMU_SENSOR 1
 #endif
 
 /** Enable GPIO expander by default. Set this definition value to 0 to disable GPIO expander */
 #if !defined(ALORA_USE_GPIO_EXPANDER)
-    #warning "Enabling GPIO Expander by default"
     #define ALORA_USE_GPIO_EXPANDER 1
 #endif
 
 /** Enable HDC1080 by default. Set this definition value to 0 to disable HDC1080 */
 #if !defined(ALORA_USE_HDC1080_SENSOR)
-    #warning "Enabling HDC1080 sensor by default"
     #define ALORA_USE_HDC1080_SENSOR 1
 #endif
 
 /** Enable BME280 by default. Set this definition value to 0 to disable BME280 */
 #if !defined(ALORA_USE_BME280_SENSOR)
-    #warning "Enabling BME280 sensor by default"
     #define ALORA_USE_BME280_SENSOR 1
 #endif
 
 /** Enable TSL2591 by default. Set this definition value to 0 to disable TSL2591 */
 #if !defined(ALORA_USE_TSL2591_SENSOR)
-    #warning "Enabling TSL2591 sensor by default"
     #define ALORA_USE_TSL2591_SENSOR 1
 #endif
 
@@ -114,22 +100,21 @@ using namespace AllAboutEE;
 
 /** Magnetic sensor pin. It is GPIO 35 on ESPectro32 board */
 #if !defined(ALORA_MAGNETIC_SENSOR_PIN)
-    #warning "Using GPIO 35 as magnetic sensor pin"
     #define ALORA_MAGNETIC_SENSOR_PIN 35
 #endif
 
 /** Heater pin for gas sensor. It is pin GPIO 13 on ESPectro32 board */
 #if !defined(ALORA_ADC_GAS_HEATER_PIN)
-    #warning "Using GPIO 13 as gas sensor heater pin"
     #define ALORA_ADC_GAS_HEATER_PIN 13
 #endif
 
 /** Channel number of MAX1109 for gas sensor */
-#define ALORA_ADC_GAS_CHANNEL 1
+#if !defined(ALORA_ADC_GAS_CHANNEL)
+    #define ALORA_ADC_GAS_CHANNEL 1
+#endif
 
 /** GPS enable pin on GPIO Expander */
 #if !defined(ALORA_GPS_ENABLE_PIN)
-    #warning "Using default GPS enable pin: IOX12"
     #define ALORA_GPS_ENABLE_PIN 12
 #endif
 
@@ -169,11 +154,13 @@ struct SensorValues {
  */
 class AloraSensorKit {
 public:
-    AloraSensorKit();
+    AloraSensorKit(uint8_t enablePin = 16, uint8_t activeLogic = HIGH);
     ~AloraSensorKit();
 
     void begin();
     void run();
+    void turnOff();
+    void turnOn();
     void scanAndPrintI2C(Print& print);
     void printSensingTo(Print& print);
     void printSensingTo(String& str);
@@ -182,8 +169,13 @@ public:
     SensorValues& getLastSensorData();
     void initGPS(Stream* gpsStream);
     NMEAGPS* getGPSObject();
+    GpioExpander* getIOExpander();
+    ALORA_IMU_SENSOR* getIMUSensorAdapter();
 
 private:
+    uint8_t enablePin;
+    uint8_t enablePinActiveLogic;
+
     NMEAGPS* gps = NULL;
     Stream* gpsStream = NULL;
     Adafruit_BME280* bme280 = NULL;                             /**< Object of Adafruit BME280 sensor */

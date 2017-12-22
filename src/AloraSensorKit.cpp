@@ -7,8 +7,16 @@
 
 #include "AloraSensorKit.h"
 
-AloraSensorKit::AloraSensorKit() {
-}
+/**
+ * @brief Instantiate Alora board library object
+ *
+ * @param enablePin GPIO pin to enable Alora, 16 on Alora v2 and 13 on Alora v2.2. Default to 16
+ * @param activeLogic Alora enable pin logic. Use LOW for Alora v2.2. Default to HIGH
+ */
+AloraSensorKit::AloraSensorKit(uint8_t enablePin, uint8_t activeLogic):
+ enablePin(enablePin),
+ enablePinActiveLogic(activeLogic) {
+ }
 
 AloraSensorKit::~AloraSensorKit() {
     if (ccs811 != NULL) {
@@ -52,8 +60,8 @@ AloraSensorKit::~AloraSensorKit() {
  * Initialize Alora board and its sensors.
  */
 void AloraSensorKit::begin() {
-    pinMode(ALORA_ENABLE_PIN, OUTPUT);
-    digitalWrite(ALORA_ENABLE_PIN, HIGH);
+    pinMode(enablePin, OUTPUT);
+    turnOn();
 
     delay(1000);
 
@@ -115,10 +123,6 @@ void AloraSensorKit::begin() {
             // IMU enable
             ioExpander->pinMode(7, OUTPUT);
             ioExpander->digitalWrite(7, HIGH);
-
-            // GPS enable
-            ioExpander->pinMode(12, OUTPUT);
-            ioExpander->digitalWrite(12, HIGH);
 
             // enable CCS
             ioExpander->pinMode(6, OUTPUT);
@@ -645,4 +649,38 @@ void AloraSensorKit::readGPS(gps_fix& fix) {
  */
 NMEAGPS* AloraSensorKit::getGPSObject() {
     return this->gps;
+}
+
+/**
+ * @brief Get GPIO Expander pointer
+ *
+ * @return GpioExpander* pointer to GPIO Expander object
+ */
+GpioExpander* AloraSensorKit::getIOExpander() {
+    return this->ioExpander;
+}
+
+/**
+ * @brief Get IMU sensor adapter pointer
+ *
+ * @return ALORA_IMU_SENSOR* pointer to Alora IMU sensor adapter object
+ */
+ALORA_IMU_SENSOR* AloraSensorKit::getIMUSensorAdapter() {
+    return this->imuSensor;
+}
+
+/**
+ * @brief Turn on the Alora board
+ *
+ */
+void AloraSensorKit::turnOn() {
+    digitalWrite(enablePin, enablePinActiveLogic);
+}
+
+/**
+ * @brief Turn off the Alora board
+ *
+ */
+void AloraSensorKit::turnOff() {
+    digitalWrite(enablePin, !enablePinActiveLogic);
 }

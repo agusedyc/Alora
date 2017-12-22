@@ -14,7 +14,13 @@ HardwareSerial gpsSerial(1);
 #define GPS_RX 12
 #define GPS_TX 14
 
-AloraSensorKit sensorKit;
+// Use 13 for Alora board v2.2
+#define ENABLE_PIN 16
+
+// Use LOW for Alora board v2.2
+#define ENABLE_PIN_ACTIVE_LOGIC HIGH
+
+AloraSensorKit sensorKit(ENABLE_PIN, ENABLE_PIN_ACTIVE_LOGIC);
 uint32_t lastQueryMillis = 0;
 
 void setup() {
@@ -22,10 +28,10 @@ void setup() {
     // Wire.begin();
 
     Serial.begin(9600);
-    
+
     // initialize UART interface for GPS Serial, on ESPectro32 it should be:
     gpsSerial.begin(9600, SERIAL_8N1, GPS_RX, GPS_TX);
-    
+
     sensorKit.begin();
     sensorKit.initGPS(&gpsSerial);
 }
@@ -36,7 +42,7 @@ void loop() {
     if (millis() - lastQueryMillis >= 5000) {
         // update time tracker
         lastQueryMillis = millis();
-    
+
         // read all sensors
         sensorKit.run();
 

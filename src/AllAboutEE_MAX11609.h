@@ -1,5 +1,5 @@
 /**
- * @brief Arduino Library for MAX11609EEE+ device. Datasheet: 
+ * @brief Arduino Library for MAX11609EEE+ device. Datasheet:
  *        http://www.mouser.com/ds/2/256/MAX11606-MAX11611-94219.pdf
  */
 #ifndef _ALLABOUTEE_MAX11609_H_
@@ -12,8 +12,8 @@
         class MAX11609
         {
         public:
-            void begin(uint8_t sda, uint8_t scl, uint8_t vRef = NULL);
-            void begin(uint8_t vRef = NULL);
+            void begin(uint8_t sda, uint8_t scl, uint8_t vRef = 0);
+            void begin(uint8_t vRef = 0);
             void setup(uint8_t data);
             void configuration(uint8_t data);
             uint16_t read(uint8_t channel);
