@@ -97,20 +97,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><span class="preprocessor">#define GPS_RX 12</span></div>
 <div class="line"><span class="preprocessor"></span><span class="preprocessor">#define GPS_TX 14</span></div>
 <div class="line"><span class="preprocessor"></span></div>
-<div class="line"><a name="_a0"></a><a class="code" href="classAloraSensorKit.html">AloraSensorKit</a> sensorKit;</div>
+<div class="line"><span class="comment">// Use 13 for Alora board v2.2</span></div>
+<div class="line"><span class="preprocessor">#define ENABLE_PIN 16</span></div>
+<div class="line"><span class="preprocessor"></span></div>
+<div class="line"><span class="comment">// Use LOW for Alora board v2.2</span></div>
+<div class="line"><span class="preprocessor">#define ENABLE_PIN_ACTIVE_LOGIC HIGH</span></div>
+<div class="line"><span class="preprocessor"></span></div>
+<div class="line"><a name="_a0"></a><a class="code" href="classAloraSensorKit.html">AloraSensorKit</a> sensorKit(ENABLE_PIN, ENABLE_PIN_ACTIVE_LOGIC);</div>
 <div class="line">uint32_t lastQueryMillis = 0;</div>
 <div class="line"></div>
 <div class="line"><span class="keywordtype">void</span> setup() {</div>
 <div class="line">    <span class="comment">// NOTE: in case the process hang right after initializing alora library, uncomment this line below:</span></div>
 <div class="line">    <span class="comment">// Wire.begin();</span></div>
 <div class="line"></div>
-<div class="line">    Serial.<a name="a1"></a><a class="code" href="classAloraSensorKit.html#a459b744a0d67cd49c8f0d99e6473ced5">begin</a>(9600);</div>
-<div class="line">    </div>
+<div class="line">    Serial.begin(9600);</div>
+<div class="line"></div>
 <div class="line">    <span class="comment">// initialize UART interface for GPS Serial, on ESPectro32 it should be:</span></div>
 <div class="line">    gpsSerial.begin(9600, SERIAL_8N1, GPS_RX, GPS_TX);</div>
-<div class="line">    </div>
-<div class="line">    sensorKit.<a class="code" href="classAloraSensorKit.html#a459b744a0d67cd49c8f0d99e6473ced5">begin</a>();</div>
-<div class="line">    sensorKit.<a name="a2"></a><a class="code" href="classAloraSensorKit.html#af18a6fe7b84b4ac433c4feb606dae2ab">initGPS</a>(&amp;gpsSerial);</div>
+<div class="line"></div>
+<div class="line">    sensorKit.begin();</div>
+<div class="line">    sensorKit.initGPS(&amp;gpsSerial);</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="keywordtype">void</span> loop() {</div>
@@ -119,22 +125,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    <span class="keywordflow">if</span> (millis() - lastQueryMillis &gt;= 5000) {</div>
 <div class="line">        <span class="comment">// update time tracker</span></div>
 <div class="line">        lastQueryMillis = millis();</div>
-<div class="line">    </div>
+<div class="line"></div>
 <div class="line">        <span class="comment">// read all sensors</span></div>
-<div class="line">        sensorKit.<a name="a3"></a><a class="code" href="classAloraSensorKit.html#a261e598e30465e20912b5e6d49c247fb">run</a>();</div>
+<div class="line">        sensorKit.run();</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// get sensor values</span></div>
-<div class="line">        <a name="_a4"></a><a class="code" href="structSensorValues.html">SensorValues</a> sensorData = sensorKit.<a name="a5"></a><a class="code" href="classAloraSensorKit.html#aeba641828b78bee31ac57c2987070928">getLastSensorData</a>();</div>
+<div class="line">        <a name="_a1"></a><a class="code" href="structSensorValues.html">SensorValues</a> sensorData = sensorKit.getLastSensorData();</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// trace GPS fix information</span></div>
 <div class="line">        Serial.print(<span class="stringliteral">&quot;[GPS FIX] &quot;</span>);</div>
-<div class="line">        trace_all(Serial, *(sensorKit.<a name="a6"></a><a class="code" href="classAloraSensorKit.html#ae5316bec073fd661e85ac058027096e4">getGPSObject</a>()), sensorData.<a name="a7"></a><a class="code" href="structSensorValues.html#a84e691bf347dc1d1f9cb50a7c2434878">gpsFix</a>);</div>
+<div class="line">        trace_all(Serial, *(sensorKit.getGPSObject()), sensorData.<a name="a2"></a><a class="code" href="structSensorValues.html#a84e691bf347dc1d1f9cb50a7c2434878">gpsFix</a>);</div>
 <div class="line">    }</div>
 <div class="line">}</div>
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Dec 2 2017 12:03:42 for Alora Library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 22 2017 11:45:40 for Alora Library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

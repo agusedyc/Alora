@@ -86,37 +86,44 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><span class="preprocessor">#include &lt;Wire.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="AloraSensorKit_8h.html">AloraSensorKit.h</a>&gt;</span></div>
 <div class="line"></div>
-<div class="line"><a name="_a0"></a><a class="code" href="classAloraSensorKit.html">AloraSensorKit</a> sensorKit;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">// Use 13 for Alora board v2.2</span></div>
+<div class="line"><span class="preprocessor">#define ENABLE_PIN 16</span></div>
+<div class="line"><span class="preprocessor"></span></div>
+<div class="line"><span class="comment">// Use LOW for Alora board v2.2</span></div>
+<div class="line"><span class="preprocessor">#define ENABLE_PIN_ACTIVE_LOGIC HIGH</span></div>
+<div class="line"><span class="preprocessor"></span></div>
+<div class="line"><a name="_a0"></a><a class="code" href="classAloraSensorKit.html">AloraSensorKit</a> sensorKit(ENABLE_PIN, ENABLE_PIN_ACTIVE_LOGIC);</div>
 <div class="line"></div>
 <div class="line"><span class="keywordtype">void</span> setup() {</div>
 <div class="line">    <span class="comment">// NOTE: in case the process hang right after initializing alora library, uncomment this line below:</span></div>
 <div class="line">    <span class="comment">// Wire.begin();</span></div>
 <div class="line"></div>
-<div class="line">    Serial.<a name="a1"></a><a class="code" href="classAloraSensorKit.html#a459b744a0d67cd49c8f0d99e6473ced5">begin</a>(9600);</div>
-<div class="line">    sensorKit.<a class="code" href="classAloraSensorKit.html#a459b744a0d67cd49c8f0d99e6473ced5">begin</a>();</div>
+<div class="line">    Serial.begin(9600);</div>
+<div class="line">    sensorKit.begin();</div>
 <div class="line">}</div>
 <div class="line"></div>
 <div class="line"><span class="keywordtype">void</span> loop() {</div>
 <div class="line">    <span class="comment">// read all sensors</span></div>
-<div class="line">    sensorKit.<a name="a2"></a><a class="code" href="classAloraSensorKit.html#a261e598e30465e20912b5e6d49c247fb">run</a>();</div>
+<div class="line">    sensorKit.run();</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// get sensor values</span></div>
-<div class="line">    <a name="_a3"></a><a class="code" href="structSensorValues.html">SensorValues</a> sensorData = sensorKit.<a name="a4"></a><a class="code" href="classAloraSensorKit.html#aeba641828b78bee31ac57c2987070928">getLastSensorData</a>();</div>
+<div class="line">    <a name="_a1"></a><a class="code" href="structSensorValues.html">SensorValues</a> sensorData = sensorKit.getLastSensorData();</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// sensorData.T1 and sensorData.T2 are temperature sensor data</span></div>
 <div class="line">    Serial.print(<span class="stringliteral">&quot;Temperature data:&quot;</span>);</div>
-<div class="line">    Serial.println(sensorData.<a name="a5"></a><a class="code" href="structSensorValues.html#afb53989adfcc142d6e0cf1f610507d7c">T1</a>);</div>
+<div class="line">    Serial.println(sensorData.<a name="a2"></a><a class="code" href="structSensorValues.html#afb53989adfcc142d6e0cf1f610507d7c">T1</a>);</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// sensorData.H1 and sensorData.H2 are humidity sensor data</span></div>
 <div class="line">    Serial.println(<span class="stringliteral">&quot;Humidity data:&quot;</span>);</div>
-<div class="line">    Serial.println(sensorData.<a name="a6"></a><a class="code" href="structSensorValues.html#a4c5409ff1f358b85e8288d3ec4ce911e">H1</a>);</div>
+<div class="line">    Serial.println(sensorData.<a name="a3"></a><a class="code" href="structSensorValues.html#a4c5409ff1f358b85e8288d3ec4ce911e">H1</a>);</div>
 <div class="line"></div>
 <div class="line">    delay(1000);</div>
 <div class="line">}</div>
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Dec 2 2017 12:03:42 for Alora Library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 22 2017 11:45:40 for Alora Library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

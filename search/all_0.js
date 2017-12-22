@@ -10,7 +10,6 @@ var searchData=
   ['allaboutee',['AllAboutEE',['../namespaceAllAboutEE.html',1,'']]],
   ['alora_5fadc_5fgas_5fchannel',['ALORA_ADC_GAS_CHANNEL',['../AloraSensorKit_8h.html#a7d71ffa85b701e33165d3a6b5cf7fe48',1,'AloraSensorKit.h']]],
   ['alora_5fadc_5fgas_5fheater_5fpin',['ALORA_ADC_GAS_HEATER_PIN',['../AloraSensorKit_8h.html#a5474d4c65567f2ac0c421e2dc1f654f4',1,'AloraSensorKit.h']]],
-  ['alora_5fenable_5fpin',['ALORA_ENABLE_PIN',['../AloraSensorKit_8h.html#aa5eddd31c55b3cb7533e41dd9cbe1f6a',1,'AloraSensorKit.h']]],
   ['alora_5fgps_5fenable_5fpin',['ALORA_GPS_ENABLE_PIN',['../AloraSensorKit_8h.html#a13957b72f558a1ee9365e09f959876fc',1,'AloraSensorKit.h']]],
   ['alora_5fhdc1080_5faddress',['ALORA_HDC1080_ADDRESS',['../AloraSensorKit_8h.html#ad72bd30e658a641cd5492e5456b821dc',1,'AloraSensorKit.h']]],
   ['alora_5fi2c_5faddress_5fccs811',['ALORA_I2C_ADDRESS_CCS811',['../AloraSensorKit_8h.html#afd3ed968d70d8b4a3eb613cb0429302d',1,'AloraSensorKit.h']]],
@@ -31,7 +30,7 @@ var searchData=
   ['aloraimulsm9ds1adapter_2eh',['AloraIMULSM9DS1Adapter.h',['../AloraIMULSM9DS1Adapter_8h.html',1,'']]],
   ['aloraimusensorbase',['AloraIMUSensorBase',['../classAloraIMUSensorBase.html',1,'']]],
   ['aloraimusensorinterface_2eh',['AloraIMUSensorInterface.h',['../AloraIMUSensorInterface_8h.html',1,'']]],
-  ['alorasensorkit',['AloraSensorKit',['../classAloraSensorKit.html',1,'AloraSensorKit'],['../classAloraSensorKit.html#a441c8d986d3712739b7c9c96f9dea64b',1,'AloraSensorKit::AloraSensorKit()']]],
+  ['alorasensorkit',['AloraSensorKit',['../classAloraSensorKit.html',1,'AloraSensorKit'],['../classAloraSensorKit.html#a9ae3aa3d48c6aeb3592f04d5e23c22a8',1,'AloraSensorKit::AloraSensorKit()']]],
   ['alorasensorkit_2ecpp',['AloraSensorKit.cpp',['../AloraSensorKit_8cpp.html',1,'']]],
   ['alorasensorkit_2eh',['AloraSensorKit.h',['../AloraSensorKit_8h.html',1,'']]]
 ];
