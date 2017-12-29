@@ -15,8 +15,8 @@
  */
 AloraSensorKit::AloraSensorKit(uint8_t enablePin, uint8_t activeLogic):
  enablePin(enablePin),
- enablePinActiveLogic(activeLogic) {
- }
+ enablePinActiveLogic(activeLogic),
+ ccs811WakeLogic(LOW) {}
 
 AloraSensorKit::~AloraSensorKit() {
     if (ccs811 != NULL) {
@@ -130,7 +130,7 @@ void AloraSensorKit::begin() {
 
             // wake CCS
             ioExpander->pinMode(0, OUTPUT);
-            ioExpander->digitalWrite(0, HIGH);
+            ioExpander->digitalWrite(0, this->ccs811WakeLogic);
         } else {
             Serial.println("[ERROR] Failed to initialize SX1509 IO Expander");
             delete ioExpander;
@@ -683,4 +683,13 @@ void AloraSensorKit::turnOn() {
  */
 void AloraSensorKit::turnOff() {
     digitalWrite(enablePin, !enablePinActiveLogic);
+}
+
+/**
+ * @brief Set CCS811 air quality sensor wake logic
+ *
+ * @param wakeLogic either HIGH or LOW
+ */
+void AloraSensorKit::setCCS811WakeLogic(uint8_t wakeLogic) {
+    this->ccs811WakeLogic = wakeLogic;
 }

@@ -171,13 +171,14 @@ public:
     NMEAGPS* getGPSObject();
     GpioExpander* getIOExpander();
     ALORA_IMU_SENSOR* getIMUSensorAdapter();
+    void setCCS811WakeLogic(uint8_t wakeLogic = LOW);
 
 private:
-    uint8_t enablePin;
-    uint8_t enablePinActiveLogic;
+    uint8_t enablePin;                                          /**< Alora board enable pin */
+    uint8_t enablePinActiveLogic;                               /**< Aloar board enable pin active logic */
 
-    NMEAGPS* gps = NULL;
-    Stream* gpsStream = NULL;
+    NMEAGPS* gps = NULL;                                        /**< NMEAGPS object */
+    Stream* gpsStream = NULL;                                   /**< Stream of GPS data */
     Adafruit_BME280* bme280 = NULL;                             /**< Object of Adafruit BME280 sensor */
     ClosedCube_HDC1080* hdc1080 = NULL;                         /**< Object of HDC1080 sensor */
     Adafruit_TSL2591* tsl2591 = NULL;                           /**< Object of Adafruit TSL2591 sensor */
@@ -189,6 +190,8 @@ private:
 
     SensorValues lastSensorData;                                /**< Object of SensorValues struct. All sensor data are stored in this property */
     uint32_t lastSensorQuerryMs = 0;                            /**< Records the time when the sensor data is read in milliseconds */
+
+    uint8_t ccs811WakeLogic;                                    /**< CCS811 air quality sensor wake logic */
 
     void doAllSensing();
     void readBME280(float& T, float& P, float& H);
