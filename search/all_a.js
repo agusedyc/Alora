@@ -1,27 +1,5 @@
 var searchData=
 [
-  ['read',['read',['../classAllAboutEE_1_1MAX11609.html#a817b72d27c8e22007f79e8e9148a366b',1,'AllAboutEE::MAX11609']]],
-  ['readaccelerometer',['readAccelerometer',['../classAloraSensorKit.html#a2e8ed3be0bee6b624d9646ca8afa4d58',1,'AloraSensorKit']]],
-  ['readaccelx',['readAccelX',['../classAloraIMULSM9DS1Adapter.html#a1f8045571efdb96fe16feec8b117bfe9',1,'AloraIMULSM9DS1Adapter::readAccelX()'],['../classAloraIMUSensorBase.html#ab97200d3714cb01baaf5d47c1c3f81ab',1,'AloraIMUSensorBase::readAccelX()']]],
-  ['readaccely',['readAccelY',['../classAloraIMULSM9DS1Adapter.html#aa4872aa52c6184ea0e9c1f6b64147e81',1,'AloraIMULSM9DS1Adapter::readAccelY()'],['../classAloraIMUSensorBase.html#a6531889af38e0db63db759383a0ef9db',1,'AloraIMUSensorBase::readAccelY()']]],
-  ['readaccelz',['readAccelZ',['../classAloraIMULSM9DS1Adapter.html#a57f7873455da3d07548b77b1b74f51fb',1,'AloraIMULSM9DS1Adapter::readAccelZ()'],['../classAloraIMUSensorBase.html#adbdf2057fdf3055c0a8d27c28986cf3e',1,'AloraIMUSensorBase::readAccelZ()']]],
-  ['readadc',['readADC',['../classAloraSensorKit.html#a7730c2034fd874d374b04fa47bfc2033',1,'AloraSensorKit']]],
-  ['readbme280',['readBME280',['../classAloraSensorKit.html#ae0f70dc3cbf2ddc8802407dd674a531a',1,'AloraSensorKit']]],
-  ['readgas',['readGas',['../classAloraSensorKit.html#ac95d622e58a1f6990f96a5b37f5557e3',1,'AloraSensorKit']]],
-  ['readgps',['readGPS',['../classAloraSensorKit.html#a848e220c160325d3ab707b5f89d6791e',1,'AloraSensorKit']]],
-  ['readgyro',['readGyro',['../classAloraSensorKit.html#a8f26500fc0c7172598068576d3b96963',1,'AloraSensorKit']]],
-  ['readgyrox',['readGyroX',['../classAloraIMULSM9DS1Adapter.html#a0f81587b4c1beddac464d548f305cbd9',1,'AloraIMULSM9DS1Adapter::readGyroX()'],['../classAloraIMUSensorBase.html#a604fbadc590dd32af9f16e36c1f0bc98',1,'AloraIMUSensorBase::readGyroX()']]],
-  ['readgyroy',['readGyroY',['../classAloraIMULSM9DS1Adapter.html#adce05af74f0201c553773d4c6d2a0c7f',1,'AloraIMULSM9DS1Adapter::readGyroY()'],['../classAloraIMUSensorBase.html#ac8016b2eaf40388562375a8ac087072c',1,'AloraIMUSensorBase::readGyroY()']]],
-  ['readgyroz',['readGyroZ',['../classAloraIMULSM9DS1Adapter.html#ad8273916c1d0bfb6ac9fe9e0217be7ca',1,'AloraIMULSM9DS1Adapter::readGyroZ()'],['../classAloraIMUSensorBase.html#a95235e7ba0820980d30f582a7df15601',1,'AloraIMUSensorBase::readGyroZ()']]],
-  ['readhdc1080',['readHDC1080',['../classAloraSensorKit.html#a9eb4fe3472c8793d649d319e93b3d1c4',1,'AloraSensorKit']]],
-  ['readmagheading',['readMagHeading',['../classAloraIMULSM9DS1Adapter.html#aed85c1162e1f312528e5627b5e48d1fa',1,'AloraIMULSM9DS1Adapter::readMagHeading()'],['../classAloraIMUSensorBase.html#aa70b1e96cf5f5f786c2f4dfc2604c577',1,'AloraIMUSensorBase::readMagHeading()']]],
-  ['readmagneticsensor',['readMagneticSensor',['../classAloraSensorKit.html#a5c717a79ce357263e9ebe9e2db8140da',1,'AloraSensorKit']]],
-  ['readmagnetometer',['readMagnetometer',['../classAloraSensorKit.html#a941c8b80c292574f18eb0ba8ec9e4575',1,'AloraSensorKit']]],
-  ['readmagx',['readMagX',['../classAloraIMULSM9DS1Adapter.html#a125981d9ae94b5e878188c7048d27738',1,'AloraIMULSM9DS1Adapter::readMagX()'],['../classAloraIMUSensorBase.html#ad3b3eb57ca76e1382b02440a725826f7',1,'AloraIMUSensorBase::readMagX()']]],
-  ['readmagy',['readMagY',['../classAloraIMULSM9DS1Adapter.html#a3f82d672af9b6a69296adc9305297174',1,'AloraIMULSM9DS1Adapter::readMagY()'],['../classAloraIMUSensorBase.html#a54389127913dbd2e56aef048c42ac7bc',1,'AloraIMUSensorBase::readMagY()']]],
-  ['readmagz',['readMagZ',['../classAloraIMULSM9DS1Adapter.html#a7b8018d8298be9d8c286d962b8ff7def',1,'AloraIMULSM9DS1Adapter::readMagZ()'],['../classAloraIMUSensorBase.html#a701af6801e75ceb8921bd19994cc5c73',1,'AloraIMUSensorBase::readMagZ()']]],
-  ['readtsl2591',['readTSL2591',['../classAloraSensorKit.html#a04dba3e2cec80b37cf30c9a5aee591e3',1,'AloraSensorKit']]],
-  ['readwindspeed',['readWindSpeed',['../classAloraSensorKit.html#afec2dd1046ed609926b9f98b678a8462',1,'AloraSensorKit']]],
-  ['rtc',['rtc',['../classAloraSensorKit.html#a4b624874aaeea0b4e099ebf95c2d7cf8',1,'AloraSensorKit']]],
-  ['run',['run',['../classAloraSensorKit.html#a261e598e30465e20912b5e6d49c247fb',1,'AloraSensorKit']]]
+  ['p',['P',['../structSensorValues.html#a7e789f78113a3a535ac583b225b1128d',1,'SensorValues']]],
+  ['printsensingto',['printSensingTo',['../classAloraSensorKit.html#a1934e2bc10a98c747654ece825328226',1,'AloraSensorKit::printSensingTo(Print &amp;print)'],['../classAloraSensorKit.html#ae676e87e90002afb80c585697f92fc45',1,'AloraSensorKit::printSensingTo(String &amp;str)']]]
 ];

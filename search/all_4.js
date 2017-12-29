@@ -1,18 +1,5 @@
 var searchData=
 [
-  ['gas',['gas',['../structSensorValues.html#acc9e32e082133291f20a37af58a30b0f',1,'SensorValues']]],
-  ['getdatetime',['getDateTime',['../classAloraSensorKit.html#a6486b1a33af126455c044730c2ea9a98',1,'AloraSensorKit']]],
-  ['getevent',['getEvent',['../classAdafruit__TSL2591.html#ace6874a951bd898e818a7066fbd78fd1',1,'Adafruit_TSL2591']]],
-  ['getgpsobject',['getGPSObject',['../classAloraSensorKit.html#ae5316bec073fd661e85ac058027096e4',1,'AloraSensorKit']]],
-  ['getimusensor',['getIMUSensor',['../classAloraIMULSM9DS1Adapter.html#a4f9393a5b945878ff8e3876148d466f0',1,'AloraIMULSM9DS1Adapter']]],
-  ['getimusensoradapter',['getIMUSensorAdapter',['../classAloraSensorKit.html#a40ab9d245570d0b3ddf37173a8609a9c',1,'AloraSensorKit']]],
-  ['getioexpander',['getIOExpander',['../classAloraSensorKit.html#a4c910f6e623fa278f61abf177f5e2669',1,'AloraSensorKit']]],
-  ['getlastsensordata',['getLastSensorData',['../classAloraSensorKit.html#aeba641828b78bee31ac57c2987070928',1,'AloraSensorKit']]],
-  ['getsensor',['getSensor',['../classAdafruit__TSL2591.html#aec46ddf7eca27c6e2563e5517eb273bf',1,'Adafruit_TSL2591']]],
-  ['gpioexpander',['GpioExpander',['../classGpioExpander.html',1,'']]],
-  ['gpsfix',['gpsFix',['../structSensorValues.html#a84e691bf347dc1d1f9cb50a7c2434878',1,'SensorValues']]],
-  ['gyrosettings',['gyroSettings',['../structgyroSettings.html',1,'']]],
-  ['gyrox',['gyroX',['../structSensorValues.html#aaee0232bcc7d9ff1945b1a9ceda6ee09',1,'SensorValues']]],
-  ['gyroy',['gyroY',['../structSensorValues.html#a871e05b79edbe269791e427f78e77cea',1,'SensorValues']]],
-  ['gyroz',['gyroZ',['../structSensorValues.html#a5a3dfbcc12ed8cfdf209d267820306d2',1,'SensorValues']]]
+  ['enablepin',['enablePin',['../classAloraSensorKit.html#a4fbdc2b9b02374a91cc71c679897a8be',1,'AloraSensorKit']]],
+  ['enablepinactivelogic',['enablePinActiveLogic',['../classAloraSensorKit.html#a6dc8958e74af75e58bbeb20cbe5fa78d',1,'AloraSensorKit']]]
 ];

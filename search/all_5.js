@@ -1,6 +1,20 @@
 var searchData=
 [
-  ['h1',['H1',['../structSensorValues.html#a4c5409ff1f358b85e8288d3ec4ce911e',1,'SensorValues']]],
-  ['h2',['H2',['../structSensorValues.html#a11245e5188559b30a360ca868fe8914c',1,'SensorValues']]],
-  ['hdc1080',['hdc1080',['../classAloraSensorKit.html#a5b6fdcf01312e8b7349bc2cb3d2795c7',1,'AloraSensorKit']]]
+  ['gas',['gas',['../structSensorValues.html#acc9e32e082133291f20a37af58a30b0f',1,'SensorValues']]],
+  ['getdatetime',['getDateTime',['../classAloraSensorKit.html#a6486b1a33af126455c044730c2ea9a98',1,'AloraSensorKit']]],
+  ['getevent',['getEvent',['../classAdafruit__TSL2591.html#ace6874a951bd898e818a7066fbd78fd1',1,'Adafruit_TSL2591']]],
+  ['getgpsobject',['getGPSObject',['../classAloraSensorKit.html#ae5316bec073fd661e85ac058027096e4',1,'AloraSensorKit']]],
+  ['getimusensor',['getIMUSensor',['../classAloraIMULSM9DS1Adapter.html#a4f9393a5b945878ff8e3876148d466f0',1,'AloraIMULSM9DS1Adapter']]],
+  ['getimusensoradapter',['getIMUSensorAdapter',['../classAloraSensorKit.html#a40ab9d245570d0b3ddf37173a8609a9c',1,'AloraSensorKit']]],
+  ['getioexpander',['getIOExpander',['../classAloraSensorKit.html#a4c910f6e623fa278f61abf177f5e2669',1,'AloraSensorKit']]],
+  ['getlastsensordata',['getLastSensorData',['../classAloraSensorKit.html#aeba641828b78bee31ac57c2987070928',1,'AloraSensorKit']]],
+  ['getsensor',['getSensor',['../classAdafruit__TSL2591.html#aec46ddf7eca27c6e2563e5517eb273bf',1,'Adafruit_TSL2591']]],
+  ['gpioexpander',['GpioExpander',['../classGpioExpander.html',1,'']]],
+  ['gps',['gps',['../classAloraSensorKit.html#a3f589dab80779558d05ec08b2292e203',1,'AloraSensorKit']]],
+  ['gpsfix',['gpsFix',['../structSensorValues.html#a84e691bf347dc1d1f9cb50a7c2434878',1,'SensorValues']]],
+  ['gpsstream',['gpsStream',['../classAloraSensorKit.html#a6bbc6780cb3db814f3c03366b2a631a0',1,'AloraSensorKit']]],
+  ['gyrosettings',['gyroSettings',['../structgyroSettings.html',1,'']]],
+  ['gyrox',['gyroX',['../structSensorValues.html#aaee0232bcc7d9ff1945b1a9ceda6ee09',1,'SensorValues']]],
+  ['gyroy',['gyroY',['../structSensorValues.html#a871e05b79edbe269791e427f78e77cea',1,'SensorValues']]],
+  ['gyroz',['gyroZ',['../structSensorValues.html#a5a3dfbcc12ed8cfdf209d267820306d2',1,'SensorValues']]]
 ];

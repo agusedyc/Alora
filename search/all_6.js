@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['imusensor',['imuSensor',['../classAloraIMULSM9DS1Adapter.html#abe78a6864bc93c144cbf7d0ee6bf0a84',1,'AloraIMULSM9DS1Adapter::imuSensor()'],['../classAloraSensorKit.html#a44e45565182d6e940c46bf458898a7ad',1,'AloraSensorKit::imuSensor()']]],
-  ['imusettings',['IMUSettings',['../structIMUSettings.html',1,'']]],
-  ['initgps',['initGPS',['../classAloraSensorKit.html#af18a6fe7b84b4ac433c4feb606dae2ab',1,'AloraSensorKit']]],
-  ['ioexpander',['ioExpander',['../classAloraSensorKit.html#ac39ee7a439424a9c1afe283da61fe702',1,'AloraSensorKit']]]
+  ['h1',['H1',['../structSensorValues.html#a4c5409ff1f358b85e8288d3ec4ce911e',1,'SensorValues']]],
+  ['h2',['H2',['../structSensorValues.html#a11245e5188559b30a360ca868fe8914c',1,'SensorValues']]],
+  ['hdc1080',['hdc1080',['../classAloraSensorKit.html#a5b6fdcf01312e8b7349bc2cb3d2795c7',1,'AloraSensorKit']]]
 ];

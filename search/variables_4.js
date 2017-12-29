@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['h1',['H1',['../structSensorValues.html#a4c5409ff1f358b85e8288d3ec4ce911e',1,'SensorValues']]],
-  ['h2',['H2',['../structSensorValues.html#a11245e5188559b30a360ca868fe8914c',1,'SensorValues']]],
-  ['hdc1080',['hdc1080',['../classAloraSensorKit.html#a5b6fdcf01312e8b7349bc2cb3d2795c7',1,'AloraSensorKit']]]
+  ['gas',['gas',['../structSensorValues.html#acc9e32e082133291f20a37af58a30b0f',1,'SensorValues']]],
+  ['gps',['gps',['../classAloraSensorKit.html#a3f589dab80779558d05ec08b2292e203',1,'AloraSensorKit']]],
+  ['gpsfix',['gpsFix',['../structSensorValues.html#a84e691bf347dc1d1f9cb50a7c2434878',1,'SensorValues']]],
+  ['gpsstream',['gpsStream',['../classAloraSensorKit.html#a6bbc6780cb3db814f3c03366b2a631a0',1,'AloraSensorKit']]],
+  ['gyrox',['gyroX',['../structSensorValues.html#aaee0232bcc7d9ff1945b1a9ceda6ee09',1,'SensorValues']]],
+  ['gyroy',['gyroY',['../structSensorValues.html#a871e05b79edbe269791e427f78e77cea',1,'SensorValues']]],
+  ['gyroz',['gyroZ',['../structSensorValues.html#a5a3dfbcc12ed8cfdf209d267820306d2',1,'SensorValues']]]
 ];

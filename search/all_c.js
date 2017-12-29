@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['t1',['T1',['../structSensorValues.html#afb53989adfcc142d6e0cf1f610507d7c',1,'SensorValues']]],
-  ['t2',['T2',['../structSensorValues.html#a7cef8ae2c75fcab611eb02f45346f4ee',1,'SensorValues']]],
-  ['temperaturesettings',['temperatureSettings',['../structtemperatureSettings.html',1,'']]],
-  ['tsl2591',['tsl2591',['../classAloraSensorKit.html#aa5d359099b87f2b7099ea294721d3e28',1,'AloraSensorKit']]],
-  ['turnoff',['turnOff',['../classAloraSensorKit.html#afdafe2e007f0d847818b59ea11101c6a',1,'AloraSensorKit']]],
-  ['turnon',['turnOn',['../classAloraSensorKit.html#aa068bddf87e50440cdf35e30040635af',1,'AloraSensorKit']]]
+  ['scan',['scan',['../classAllAboutEE_1_1MAX11609.html#a8f40407f0b0744373bdb9cf662f88558',1,'AllAboutEE::MAX11609']]],
+  ['scanandprinti2c',['scanAndPrintI2C',['../classAloraSensorKit.html#a722c4f04a8a703b870851b498dbb1b50',1,'AloraSensorKit']]],
+  ['sensorvalues',['SensorValues',['../structSensorValues.html',1,'']]],
+  ['setccs811wakelogic',['setCCS811WakeLogic',['../classAloraSensorKit.html#a0b70c05b46d8259f8ae481a314df924c',1,'AloraSensorKit']]],
+  ['setup',['setup',['../classAllAboutEE_1_1MAX11609.html#abcf65ad4ee3b5e4283212154d3c964ba',1,'AllAboutEE::MAX11609']]]
 ];

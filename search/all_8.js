@@ -1,11 +1,8 @@
 var searchData=
 [
-  ['magheading',['magHeading',['../structSensorValues.html#a5bd4872be3f53833b1e0a42114d67d95',1,'SensorValues']]],
-  ['magnetic',['magnetic',['../structSensorValues.html#ae8e04c61f4e7c380f893c09a8497307b',1,'SensorValues']]],
-  ['magsettings',['magSettings',['../structmagSettings.html',1,'']]],
-  ['magx',['magX',['../structSensorValues.html#a033b9abaa2e67b2be939163575277757',1,'SensorValues']]],
-  ['magy',['magY',['../structSensorValues.html#a3bfe99e930c01e46654bda74bbbc09c0',1,'SensorValues']]],
-  ['magz',['magZ',['../structSensorValues.html#a55a8ce9f40a9b361dbd4c3ce17cef3ac',1,'SensorValues']]],
-  ['max11609',['max11609',['../classAloraSensorKit.html#a84ecec727306e4c6deb9a14a8853da33',1,'AloraSensorKit']]],
-  ['max11609',['MAX11609',['../classAllAboutEE_1_1MAX11609.html',1,'AllAboutEE']]]
+  ['lastsensordata',['lastSensorData',['../classAloraSensorKit.html#a25451b0eb48032beb8c5d749c0acd792',1,'AloraSensorKit']]],
+  ['lastsensorquerryms',['lastSensorQuerryMs',['../classAloraSensorKit.html#a89c817196eb98116dc3f871d86c06929',1,'AloraSensorKit']]],
+  ['lsm9ds1',['LSM9DS1',['../classLSM9DS1.html',1,'']]],
+  ['lux',['lux',['../structSensorValues.html#a62e1cec853ebff52e88322c977726d34',1,'SensorValues']]],
+  ['license',['LICENSE',['../md_LICENSE.html',1,'']]]
 ];
